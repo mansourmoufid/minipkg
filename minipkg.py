@@ -86,6 +86,12 @@ if __name__ == '__main__':
 
     # Bootstrap pkgsrc.
     print('minipkg: bootstrapping ...')
+    sh = os.environ['SH']
+    sh = sh.split(os.pathsep)[0]
+    if not sh:
+        sh = '/bin/bash'
+    assert os.path.exists(sh), sh
+    os.putenv('SH', sh)
     bootstrap_path = os.path.join(HOME, 'usr', 'pkgsrc', 'bootstrap')
     if not os.path.exists(os.path.join(bootstrap_path, 'work')):
         os.chdir(bootstrap_path)
@@ -111,6 +117,7 @@ if __name__ == '__main__':
         ('PATH', '$HOME/pkg/bin'),
         ('PATH', '$HOME/pkg/sbin'),
         ('MANPATH', '$HOME/pkg/man'),
+        ('SH', sh),
     ]
     script = [
         'export %s="%s:$%s"' % (key, val, key)
