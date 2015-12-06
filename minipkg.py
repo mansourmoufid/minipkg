@@ -18,7 +18,7 @@ __copyright__ = 'Copyright 2015, Mansour Moufid'
 __email__ = 'mansourmoufid@gmail.com'
 __license__ = 'ISC'
 __status__ = 'Development'
-__version__ = '0.2'
+__version__ = '0.3'
 
 
 if __name__ == '__main__':
