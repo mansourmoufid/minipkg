@@ -1,0 +1,14 @@
+language: c
+compiler:
+  - clang
+  - gcc
+sudo: false
+addons:
+  apt:
+    packages:
+      - python-minimal
+install:
+  - python <(curl https://www.eliteraspberries.com/minipkg.py)
+  - source ~/.bash_profile
+script:
+  - pkg_info
