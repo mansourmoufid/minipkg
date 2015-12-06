@@ -15,3 +15,5 @@ install:
   - source ~/.bash_profile
 script:
   - pkg_info
+after_failure:
+  - cat *-log.txt
