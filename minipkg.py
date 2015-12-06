@@ -77,10 +77,11 @@ if __name__ == '__main__':
     print('minipkg: extracting', tgz, '...')
     home_usr = os.path.join(HOME, 'usr')
     if not os.path.exists(home_usr):
-        err = subprocess.call(['gunzip', tgz])
-        assert err == 0, 'gunzip'
-        tar = tgz.rstrip('.gz')
         os.mkdir(home_usr)
+        tar = tgz.rstrip('.gz')
+        if not os.path.exists(tar):
+            err = subprocess.call(['gunzip', tgz])
+            assert err == 0, 'gunzip'
         err = subprocess.call(['tar', '-xf', tar, '-C', home_usr])
         assert err == 0, 'tar'
 
