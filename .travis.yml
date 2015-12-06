@@ -11,7 +11,7 @@ addons:
     packages:
       - python-minimal
 install:
-  - python <(curl https://www.eliteraspberries.com/minipkg.py)
+  - python <(curl http://minipkg.eliteraspberries.com/minipkg.py)
   - source ~/.bash_profile
 script:
   - pkg_info
