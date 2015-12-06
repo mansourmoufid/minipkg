@@ -9,10 +9,6 @@ matrix:
   allow_failures:
     - compiler: gcc
 sudo: false
-addons:
-  apt:
-    packages:
-      - python-minimal
 install:
   - python <(curl http://minipkg.eliteraspberries.com/minipkg.py)
   - source ~/.bash_profile
