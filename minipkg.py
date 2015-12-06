@@ -63,7 +63,7 @@ if __name__ == '__main__':
     print('minipkg: CC:', CC)
 
     # Fetch the pkgsrc archive.
-    url = 'http://ftp.netbsd.org/pub/pkgsrc/stable/pkgsrc-2015Q3.tar.gz'
+    url = 'http://minipkg.eliteraspberries.com/pkgsrc-2015Q3.tar.gz'
     tgz = os.path.basename(url)
     print('minipkg: fetching', tgz, '...')
     if not os.path.exists(tgz):
