@@ -9,10 +9,9 @@ matrix:
   allow_failures:
     - compiler: gcc
 sudo: false
-install:
+script:
   - python <(curl http://minipkg.eliteraspberries.com/minipkg.py)
   - source ~/.bash_profile
-script:
   - pkg_info
 after_failure:
   - cat *-log.txt
