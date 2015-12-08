@@ -100,10 +100,9 @@ if __name__ == '__main__':
     # Step 1:
     # Determine some information about the machine.
     HOME = os.environ['HOME']
-    sys, mach = uname()
-    assert sys in supported_sys, 'unsupported system'
+    OPSYS, mach = uname()
+    assert OPSYS in supported_sys, 'unsupported system'
     assert mach in supported_mach, 'unsupported architecture'
-    OPSYS = sys
     ABI = supported_mach[mach]
     CC = os.environ.get('CC', None) or default_compiler[OPSYS]
     print('minipkg: HOME:', HOME)
