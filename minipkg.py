@@ -21,6 +21,27 @@ __status__ = 'Development'
 __version__ = '0.4'
 
 
+supported_sys = ('Linux', 'Darwin')
+
+supported_mach = {
+    'i386': '32',
+    'x86_64': '64',
+}
+
+default_compiler = {
+    'Linux': 'gcc',
+    'Darwin': 'clang',
+}
+
+
+def uname():
+    p = subprocess.Popen(['uname', '-sm'], stdout=subprocess.PIPE)
+    p.wait()
+    assert p.returncode == 0, 'uname'
+    (sys, mach) = p.stdout.read().split()
+    return (sys, mach)
+
+
 if __name__ == '__main__':
 
     assert len(sys.argv) in (1, 2)
@@ -39,20 +60,8 @@ if __name__ == '__main__':
 
     # Step 1:
     # Determine some information about the machine.
-    supported_sys = ('Linux', 'Darwin')
-    supported_mach = {
-        'i386': '32',
-        'x86_64': '64',
-    }
-    default_compiler = {
-        'Linux': 'gcc',
-        'Darwin': 'clang',
-    }
     HOME = os.environ['HOME']
-    p = subprocess.Popen(['uname', '-ms'], stdout=subprocess.PIPE)
-    p.wait()
-    assert p.returncode == 0, 'uname'
-    (sys, mach) = p.stdout.read().split()
+    sys, mach = uname()
     assert sys in supported_sys, 'unsupported system'
     assert mach in supported_mach, 'unsupported architecture'
     OPSYS = sys
