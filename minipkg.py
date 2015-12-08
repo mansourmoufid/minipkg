@@ -55,6 +55,17 @@ def fetch(url):
     return filename
 
 
+def extract(tgz, path):
+    if not os.path.exists(path):
+        os.mkdir(path)
+        tar = tgz.rstrip('.gz')
+        if not os.path.exists(tar):
+            err = subprocess.call(['gunzip', tgz])
+            assert err == 0, 'gunzip'
+        err = subprocess.call(['tar', '-xf', tar, '-C', path])
+        assert err == 0, 'tar'
+
+
 if __name__ == '__main__':
 
     assert len(sys.argv) in (1, 2)
@@ -94,14 +105,7 @@ if __name__ == '__main__':
     # Extract the pkgsrc archive.
     print('minipkg: extracting', tgz, '...')
     home_usr = os.path.join(HOME, 'usr')
-    if not os.path.exists(home_usr):
-        os.mkdir(home_usr)
-        tar = tgz.rstrip('.gz')
-        if not os.path.exists(tar):
-            err = subprocess.call(['gunzip', tgz])
-            assert err == 0, 'gunzip'
-        err = subprocess.call(['tar', '-xf', tar, '-C', home_usr])
-        assert err == 0, 'tar'
+    extract(tgz, home_usr)
 
     # Step 4:
     # Bootstrap pkgsrc.
