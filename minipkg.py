@@ -140,6 +140,7 @@ if __name__ == '__main__':
                     '--abi', ABI,
                     '--compiler', CC,
                     '--make-jobs', '4',
+                    '--prefer-pkgsrc', 'no',
                 ],
                 stdout=f,
                 stderr=f,
