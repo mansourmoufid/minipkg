@@ -33,6 +33,8 @@ default_compiler = {
     'Darwin': 'clang',
 }
 
+archive = 'http://minipkg.eliteraspberries.com/pkgsrc-2015Q3.tar.gz'
+
 
 def uname():
     p = subprocess.Popen(['uname', '-sm'], stdout=subprocess.PIPE)
@@ -40,6 +42,17 @@ def uname():
     assert p.returncode == 0, 'uname'
     (sys, mach) = p.stdout.read().split()
     return (sys, mach)
+
+
+def fetch(url):
+    filename = os.path.basename(url)
+    if not os.path.exists(filename):
+        req = urllib2.Request(url)
+        res = urllib2.urlopen(req)
+        dat = res.read()
+        with open(filename, 'wb') as f:
+            f.write(dat)
+    return filename
 
 
 if __name__ == '__main__':
@@ -74,15 +87,8 @@ if __name__ == '__main__':
 
     # Step 2:
     # Fetch the pkgsrc archive.
-    url = 'http://minipkg.eliteraspberries.com/pkgsrc-2015Q3.tar.gz'
-    tgz = os.path.basename(url)
-    print('minipkg: fetching', tgz, '...')
-    if not os.path.exists(tgz):
-        req = urllib2.Request(url)
-        res = urllib2.urlopen(req)
-        dat = res.read()
-        with open(tgz, 'wb') as f:
-            f.write(dat)
+    print('minipkg: fetching', archive, '...')
+    tgz = fetch(archive)
 
     # Step 3:
     # Extract the pkgsrc archive.
