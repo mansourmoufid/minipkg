@@ -74,6 +74,8 @@ if __name__ == '__main__':
     elif len(sys.argv) == 2:
         if sys.argv[1] in ('-h', '--help'):
             print(__doc__)
+            print('Supported systems:', supported_sys)
+            print('Supported architectures:', supported_mach.keys())
             sys.exit(os.EX_OK)
         elif sys.argv[1] in ('-v', '--version'):
             print('minipkg version', __version__)
@@ -81,6 +83,8 @@ if __name__ == '__main__':
         else:
             print(__doc__)
             sys.exit(os.EX_USAGE)
+
+    print('minipkg: version', __version__)
 
     # Step 1:
     # Determine some information about the machine.
