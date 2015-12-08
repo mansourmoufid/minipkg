@@ -72,12 +72,12 @@ def fetch(url, hash):
 def extract(tgz, path):
     if not os.path.exists(path):
         os.mkdir(path)
-        tar = tgz.rstrip('.gz')
-        if not os.path.exists(tar):
-            err = subprocess.call(['gunzip', tgz])
-            assert err == 0, 'gunzip'
-        err = subprocess.call(['tar', '-xf', tar, '-C', path])
-        assert err == 0, 'tar'
+    tar = tgz.rstrip('.gz')
+    if not os.path.exists(tar):
+        err = subprocess.call(['gunzip', tgz])
+        assert err == 0, 'gunzip'
+    err = subprocess.call(['tar', '-xf', tar, '-C', path])
+    assert err == 0, 'tar'
 
 
 if __name__ == '__main__':
