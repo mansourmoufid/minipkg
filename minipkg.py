@@ -37,6 +37,7 @@ if __name__ == '__main__':
             print(__doc__)
             sys.exit(os.EX_USAGE)
 
+    # Step 1:
     # Determine some information about the machine.
     supported_sys = ('Linux', 'Darwin')
     supported_mach = {
@@ -62,6 +63,7 @@ if __name__ == '__main__':
     print('minipkg: ABI:', ABI)
     print('minipkg: CC:', CC)
 
+    # Step 2:
     # Fetch the pkgsrc archive.
     url = 'http://minipkg.eliteraspberries.com/pkgsrc-2015Q3.tar.gz'
     tgz = os.path.basename(url)
@@ -73,6 +75,7 @@ if __name__ == '__main__':
         with open(tgz, 'wb') as f:
             f.write(dat)
 
+    # Step 3:
     # Extract the pkgsrc archive.
     print('minipkg: extracting', tgz, '...')
     home_usr = os.path.join(HOME, 'usr')
@@ -85,6 +88,7 @@ if __name__ == '__main__':
         err = subprocess.call(['tar', '-xf', tar, '-C', home_usr])
         assert err == 0, 'tar'
 
+    # Step 4:
     # Bootstrap pkgsrc.
     print('minipkg: bootstrapping ...')
     sh = os.environ.get('SH', '/bin/bash')
@@ -110,6 +114,7 @@ if __name__ == '__main__':
             p.wait()
         assert p.returncode == 0, 'bootstrap'
 
+    # Step 5:
     # Set environment variables.
     print('minipkg: setting environment variables ...')
     vars = [
