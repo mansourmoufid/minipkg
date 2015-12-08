@@ -7,6 +7,7 @@ Usage: python minipkg.py [-h | --help] [-v | --version]
 
 
 from __future__ import print_function
+import hashlib
 import os
 import subprocess
 import sys
@@ -35,6 +36,12 @@ default_compiler = {
 
 archive = 'http://minipkg.eliteraspberries.com/pkgsrc-2015Q3.tar.gz'
 
+archive_hash = {
+    'algorithm': hashlib.sha256,
+    'digest':
+        'f56599dece253113f64d92c528989b7fcb899f3888c7c9fc40f70f08ac91fea6',
+}
+
 
 def uname():
     p = subprocess.Popen(['uname', '-sm'], stdout=subprocess.PIPE)
@@ -44,7 +51,7 @@ def uname():
     return (sys, mach)
 
 
-def fetch(url):
+def fetch(url, hash):
     filename = os.path.basename(url)
     if not os.path.exists(filename):
         req = urllib2.Request(url)
@@ -52,6 +59,10 @@ def fetch(url):
         dat = res.read()
         with open(filename, 'wb') as f:
             f.write(dat)
+    with open(filename, 'r') as f:
+        dat = f.read()
+    h = hash['algorithm'](dat)
+    assert h.hexdigest() == hash['digest']
     return filename
 
 
@@ -103,7 +114,7 @@ if __name__ == '__main__':
     # Step 2:
     # Fetch the pkgsrc archive.
     print('minipkg: fetching', archive, '...')
-    tgz = fetch(archive)
+    tgz = fetch(archive, archive_hash)
 
     # Step 3:
     # Extract the pkgsrc archive.
