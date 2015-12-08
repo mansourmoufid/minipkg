@@ -34,13 +34,17 @@ default_compiler = {
     'Darwin': 'clang',
 }
 
-archive = 'http://minipkg.eliteraspberries.com/pkgsrc-2015Q3.tar.gz'
+archives = [
+    'http://minipkg.eliteraspberries.com/pkgsrc-2015Q3.tar.gz',
+]
 
-archive_hash = {
+archive_hashes = [
+    {
     'algorithm': hashlib.sha256,
     'digest':
         'f56599dece253113f64d92c528989b7fcb899f3888c7c9fc40f70f08ac91fea6',
-}
+    },
+]
 
 
 def uname():
@@ -63,7 +67,6 @@ def fetch(url, hash):
         dat = f.read()
     h = hash['algorithm'](dat)
     assert h.hexdigest() == hash['digest']
-    return filename
 
 
 def extract(tgz, path):
@@ -112,14 +115,16 @@ if __name__ == '__main__':
 
     # Step 2:
     # Fetch the pkgsrc archive.
-    print('minipkg: fetching', archive, '...')
-    tgz = fetch(archive, archive_hash)
+    for (archive, hash) in zip(archives, archive_hashes):
+        print('minipkg: fetching', archive, '...')
+        fetch(archive, hash)
 
     # Step 3:
     # Extract the pkgsrc archive.
-    print('minipkg: extracting', tgz, '...')
     home_usr = os.path.join(HOME, 'usr')
-    extract(tgz, home_usr)
+    for tgz in map(os.path.basename, archives):
+        print('minipkg: extracting', tgz, '...')
+        extract(tgz, home_usr)
 
     # Step 4:
     # Bootstrap pkgsrc.
