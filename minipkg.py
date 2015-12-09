@@ -39,17 +39,11 @@ archives = [
     'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-0.1.tar.gz',
 ]
 
+hash_algorithm = hashlib.sha256
+
 archive_hashes = [
-    {
-    'algorithm': hashlib.sha256,
-    'digest':
-        'f56599dece253113f64d92c528989b7fcb899f3888c7c9fc40f70f08ac91fea6',
-    },
-    {
-    'algorithm': hashlib.sha256,
-    'digest':
-        '002fb1a87d7a42edcfc2c04310b65a80819085e9a8a3b1249fd0cc096ccc0b9e',
-    },
+    'f56599dece253113f64d92c528989b7fcb899f3888c7c9fc40f70f08ac91fea6',
+    '002fb1a87d7a42edcfc2c04310b65a80819085e9a8a3b1249fd0cc096ccc0b9e',
 ]
 
 
@@ -71,8 +65,8 @@ def fetch(url, hash):
             f.write(dat)
     with open(filename, 'r') as f:
         dat = f.read()
-    h = hash['algorithm'](dat)
-    assert h.hexdigest() == hash['digest']
+    h = hash_algorithm(dat)
+    assert h.hexdigest() == hash
 
 
 def extract(tgz, path):
