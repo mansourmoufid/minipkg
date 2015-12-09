@@ -10,7 +10,7 @@ matrix:
     - compiler: gcc
 sudo: false
 script:
-  - python <(curl http://minipkg.eliteraspberries.com/minipkg.py)
+  - python minipkg.py
   - source ~/.bash_profile
   - pkg_info
 after_failure:
