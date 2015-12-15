@@ -171,7 +171,5 @@ if __name__ == '__main__':
         for line in script:
             print(line, file=f)
         print('export SH=%s' % sh, file=f)
-    with open(os.path.join(HOME, '.bashrc'), 'a') as f:
-        print('. ~/.bash_profile', file=f)
 
     print('minipkg: done!')
