@@ -136,21 +136,23 @@ if __name__ == '__main__':
     bootstrap_path = os.path.join(HOME, 'usr', 'pkgsrc', 'bootstrap')
     if not os.path.exists(os.path.join(bootstrap_path, 'work')):
         os.chdir(bootstrap_path)
+        p = subprocess.Popen(
+            [
+                './bootstrap',
+                '--unprivileged',
+                '--abi', ABI,
+                '--compiler', CC,
+                '--make-jobs', '4',
+                '--prefer-pkgsrc', 'no',
+            ],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        out, err = p.communicate()
         log = os.path.join(HOME, 'pkgsrc-bootstrap-log.txt')
         with open(log, 'w') as f:
-            p = subprocess.Popen(
-                [
-                    './bootstrap',
-                    '--unprivileged',
-                    '--abi', ABI,
-                    '--compiler', CC,
-                    '--make-jobs', '4',
-                    '--prefer-pkgsrc', 'no',
-                ],
-                stdout=f,
-                stderr=f,
-            )
-            p.wait()
+            f.write(out)
+            f.write(err)
         assert p.returncode == 0, 'bootstrap'
 
     # Step 5:
