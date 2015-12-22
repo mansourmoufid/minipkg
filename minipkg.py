@@ -36,14 +36,14 @@ default_compiler = {
 
 archives = [
     'http://minipkg.eliteraspberries.com/pkgsrc-2015Q3.tar.gz',
-    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-0.2.tar.gz',
+    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-0.3.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
     'f56599dece253113f64d92c528989b7fcb899f3888c7c9fc40f70f08ac91fea6',
-    'bc393f767ffb0b7e47e097466d69e7633c1b2c5dc9f320914f47647b1d4e837f',
+    'db8ebcd1c12229e9d2da92f888cdb8505f9c486381f3f9b2cd8948a14a04b671',
 ]
 
 
