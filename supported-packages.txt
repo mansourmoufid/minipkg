@@ -1,8 +1,8 @@
 devel/nbpatch
 net/libfetch
 pkgtools/digest
-devel/gettext-lib
 devel/libtool-base
+devel/gettext-lib
 lang/perl5 perl
 devel/p5-Scalar-List-Utils
 devel/p5-CPAN-Meta
