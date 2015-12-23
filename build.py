@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+
 import os
 import subprocess
 import sys
@@ -37,7 +39,7 @@ if __name__ == '__main__':
     pkgs = [line.rstrip('\n') for line in lines]
     pkgpaths = [pkg.split(' ')[0] for pkg in pkgs]
     for pkgpath in pkgpaths:
-        print pkgpath
+        print(pkgpath)
         os.chdir(localbase)
         assert os.path.exists(os.path.join(localbase, pkgpath))
         build(pkgpath)
