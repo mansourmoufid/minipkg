@@ -35,9 +35,9 @@ if __name__ == '__main__':
 
     lines = sys.stdin.readlines()
     pkgs = [line.rstrip('\n') for line in lines]
-    pkgs = [pkg.split(' ')[0] for pkg in pkgs]
-    for pkg in pkgs:
-        print pkg
+    pkgpaths = [pkg.split(' ')[0] for pkg in pkgs]
+    for pkgpath in pkgpaths:
+        print pkgpath
         os.chdir(localbase)
-        assert os.path.exists(os.path.join(localbase, pkg))
-        build(pkg)
+        assert os.path.exists(os.path.join(localbase, pkgpath))
+        build(pkgpath)
