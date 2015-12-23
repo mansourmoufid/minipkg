@@ -61,8 +61,9 @@ if __name__ == '__main__':
     )
     out, err = p.communicate()
     assert p.returncode == 0, 'pkg_info'
-    lines = out.split('\n')
-    info = filter(lambda s: not 'REQUIRES=' in s, lines)
+    info = out.split('\n')
+    info = filter(lambda s: not 'REQUIRES=' in s, info)
+    info = filter(lambda s: not 'PROVIDES=' in s, info)
     pkg_summary = os.path.join(localbase, 'packages', 'pkg_summary')
     os.remove(pkg_summary)
     os.remove(pkg_summary + '.gz')
