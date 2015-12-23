@@ -43,3 +43,9 @@ if __name__ == '__main__':
         os.chdir(localbase)
         assert os.path.exists(os.path.join(localbase, pkgpath))
         build(pkgpath)
+    bindir = os.path.join(localbase, 'pkg', 'bin')
+    sbindir = os.path.join(localbase, 'pkg', 'sbin')
+    for var in (bindir, sbindir):
+        os.environ.update({
+            'PATH': var + os.pathsep + os.environ['PATH'],
+        })
