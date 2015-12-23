@@ -65,8 +65,11 @@ if __name__ == '__main__':
     info = filter(lambda s: not 'REQUIRES=' in s, info)
     info = filter(lambda s: not 'PROVIDES=' in s, info)
     pkg_summary = os.path.join(localbase, 'packages', 'pkg_summary')
-    os.remove(pkg_summary)
-    os.remove(pkg_summary + '.gz')
+    try:
+        os.remove(pkg_summary)
+        os.remove(pkg_summary + '.gz')
+    except OSError:
+        pass
     with open(pkg_summary, 'w+') as f:
         print('\n'.join(info), file=f)
     p = subprocess.Popen(
