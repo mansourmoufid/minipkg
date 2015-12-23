@@ -1,0 +1,16 @@
+devel/nbpatch
+net/libfetch
+pkgtools/digest
+devel/gettext-lib
+devel/libtool-base
+lang/perl5 perl
+devel/p5-Scalar-List-Utils
+devel/p5-CPAN-Meta
+devel/p5-inc-latest
+devel/p5-Module-Build
+devel/p5-Perl4-CoreLibs
+databases/sqlite3
+security/openssl
+archivers/xz
+archivers/libarchive
+pkgtools/pkgin

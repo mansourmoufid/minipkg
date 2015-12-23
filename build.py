@@ -35,6 +35,7 @@ if __name__ == '__main__':
 
     lines = sys.stdin.readlines()
     pkgs = [line.rstrip('\n') for line in lines]
+    pkgs = [pkg.split(' ')[0] for pkg in pkgs]
     for pkg in pkgs:
         print pkg
         os.chdir(localbase)
