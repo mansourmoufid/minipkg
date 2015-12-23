@@ -12,6 +12,7 @@ sudo: false
 script:
   - python minipkg.py
   - source ~/.bash_profile
+after_success:
   - python build.py < supported-packages.txt
   - pkg_info
 after_failure:
