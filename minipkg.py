@@ -11,7 +11,14 @@ import hashlib
 import os
 import subprocess
 import sys
-import urllib2
+try:
+    from urllib2 import (
+        Request as url_request,
+        urlopen as url_open,
+    )
+except ImportError:
+    import urllib.request.Request as url_request
+    import urllib.request.urlopen as url_open
 
 
 __author__ = 'Mansour Moufid'
@@ -58,8 +65,8 @@ def uname():
 def fetch(url, hash):
     filename = os.path.basename(url)
     if not os.path.exists(filename):
-        req = urllib2.Request(url)
-        res = urllib2.urlopen(req)
+        req = url_request(url)
+        res = url_open(req)
         dat = res.read()
         with open(filename, 'wb') as f:
             f.write(dat)
@@ -89,7 +96,7 @@ if __name__ == '__main__':
         if sys.argv[1] in ('-h', '--help'):
             print(__doc__)
             print('Supported systems:', supported_sys)
-            print('Supported architectures:', supported_mach.keys())
+            print('Supported architectures:', list(supported_mach.keys()))
             sys.exit(os.EX_OK)
         elif sys.argv[1] in ('-v', '--version'):
             print('minipkg version', __version__)
