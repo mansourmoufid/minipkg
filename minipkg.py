@@ -87,6 +87,37 @@ def extract(tgz, path):
     assert err == 0, 'tar'
 
 
+recommended_packages = [
+    'nbpatch-20100124.tgz',
+    'libfetch-2.36nb1.tgz',
+    'digest-20121220.tgz',
+    'libtool-base-2.4.2nb10.tgz',
+    'gzip-1.6.tgz',
+    'bzip2-1.0.6nb1.tgz',
+    'ncurses-6.0nb1.tgz',
+    'readline-6.3nb3.tgz',
+    'zlib-1.2.8nb3.tgz',
+    'gettext-lib-0.19.4.tgz',
+    'perl-5.22.0.tgz',
+    'p5-Scalar-List-Utils-1.42nb1.tgz',
+    'p5-CPAN-Meta-2.150005.tgz',
+    'p5-inc-latest-0.500.tgz',
+    'p5-Module-Build-0.42140.tgz',
+    'p5-Perl4-CoreLibs-0.003nb5.tgz',
+    'sqlite3-3.8.11.1.tgz',
+    'openssl-1.0.2d.tgz',
+    'xz-5.2.1.tgz',
+    'libarchive-3.1.2nb1.tgz',
+    'pkgin-0.9.3.tgz',
+]
+
+
+def install_binary_package(repo, pkg):
+    pkg_url = '/'.join([repo, pkg])
+    ret = subprocess.call(['pkg_add', pkg_url])
+    assert ret == 0, 'pkg_add'
+
+
 if __name__ == '__main__':
 
     assert len(sys.argv) in (1, 2)
@@ -188,5 +219,17 @@ if __name__ == '__main__':
             print(line, file=f)
         print('export SH=%s' % sh, file=f)
         print(profile, file=f)
+
+    # Step 6:
+    # Install recommended binary packages.
+    print('minipkg: installing packages ...')
+    repo = '/'.join([
+        'http://minipkg.eliteraspberries.com/packages',
+        OPSYS,
+        mach,
+        'All',
+    ])
+    for pkg in recommended_packages:
+        install_binary_package(repo, pkg)
 
     print('minipkg: done!')
