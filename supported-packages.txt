@@ -2,6 +2,11 @@ devel/nbpatch
 net/libfetch
 pkgtools/digest
 devel/libtool-base
+archivers/gzip
+archivers/bzip2
+devel/ncurses
+devel/readline
+devel/zlib
 devel/gettext-lib
 lang/perl5 perl
 devel/p5-Scalar-List-Utils
