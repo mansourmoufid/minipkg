@@ -112,9 +112,10 @@ recommended_packages = [
 ]
 
 
-def install_binary_package(repo, pkg):
+def install_binary_package(home, repo, pkg):
     pkg_url = '/'.join([repo, pkg])
-    ret = subprocess.call(['pkg_add', pkg_url])
+    prefix = os.path.join(home, 'pkg')
+    ret = subprocess.call(['pkg_add', '-p', prefix, pkg_url])
     assert ret == 0, 'pkg_add'
 
 
@@ -232,6 +233,6 @@ if __name__ == '__main__':
         'All',
     ])
     for pkg in recommended_packages:
-        install_binary_package(repo, pkg)
+        install_binary_package(HOME, repo, pkg)
 
     print('minipkg: done!')
