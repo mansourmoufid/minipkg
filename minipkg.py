@@ -170,7 +170,7 @@ if __name__ == '__main__':
     sh = os.environ.get('SH', '/bin/bash')
     sh = sh.split(os.pathsep)[0]
     assert os.path.exists(sh), sh
-    os.putenv('SH', sh)
+    os.environ.update({'SH': sh})
     bootstrap_path = os.path.join(HOME, 'usr', 'pkgsrc', 'bootstrap')
     if not os.path.exists(os.path.join(bootstrap_path, 'work')):
         os.chdir(bootstrap_path)
@@ -202,7 +202,9 @@ if __name__ == '__main__':
         ('MANPATH', '$HOME/pkg/man'),
     ]
     for (key, val) in vars:
-        os.putenv(key, val + os.pathsep + os.environ.get(key, ''))
+        os.environ.update({
+            key: val + os.pathsep + os.environ.get(key, ''),
+        })
     script = [
         'export %s="%s:$%s"' % (key, val, key)
         for (key, val) in vars
