@@ -163,6 +163,8 @@ if __name__ == '__main__':
         ('PATH', '$HOME/pkg/sbin'),
         ('MANPATH', '$HOME/pkg/man'),
     ]
+    for (key, val) in vars:
+        os.putenv(key, val + os.pathsep + os.environ.get(key, ''))
     script = [
         'export %s="%s:$%s"' % (key, val, key)
         for (key, val) in vars
