@@ -197,9 +197,9 @@ if __name__ == '__main__':
     # Set environment variables.
     print('minipkg: setting environment variables ...')
     vars = [
-        ('PATH', '$HOME/pkg/bin'),
-        ('PATH', '$HOME/pkg/sbin'),
-        ('MANPATH', '$HOME/pkg/man'),
+        ('PATH', os.path.join(HOME, 'pkg', 'bin')),
+        ('PATH', os.path.join(HOME, 'pkg', 'sbin')),
+        ('MANPATH', os.path.join(HOME, 'pkg', 'man')),
     ]
     for (key, val) in vars:
         os.environ.update({
