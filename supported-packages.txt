@@ -1,4 +1,6 @@
 devel/nbpatch
+textproc/nbsed
+lang/nawk
 net/libfetch
 pkgtools/digest
 devel/libtool-base

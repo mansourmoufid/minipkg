@@ -89,6 +89,8 @@ def extract(tgz, path):
 
 recommended_packages = [
     'nbpatch-20100124.tgz',
+    'nbsed-20120308.tgz',
+    'nawk-20121220nb1.tgz',
     'libfetch-2.36nb1.tgz',
     'digest-20121220.tgz',
     'libtool-base-2.4.2nb10.tgz',
