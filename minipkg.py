@@ -49,6 +49,15 @@ archive_hashes = [
 ]
 
 
+def which(name):
+    p = subprocess.Popen(['which', name], stdout=subprocess.PIPE)
+    p.wait()
+    if not p.returncode == 0:
+        return None
+    out = p.stdout.read()
+    return out.rstrip('\n')
+
+
 def uname():
     p = subprocess.Popen(['uname', '-sm'], stdout=subprocess.PIPE)
     p.wait()
@@ -144,6 +153,7 @@ if __name__ == '__main__':
     assert mach in supported_mach, 'unsupported architecture'
     ABI = supported_mach[mach]
     CC = os.environ.get('CC', 'clang')
+    assert which(CC), CC
     print('minipkg: HOME:', HOME)
     print('minipkg: OPSYS:', OPSYS)
     print('minipkg: ABI:', ABI)
