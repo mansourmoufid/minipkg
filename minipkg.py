@@ -36,11 +36,6 @@ supported_mach = {
     'x86_64': '64',
 }
 
-default_compiler = {
-    'Linux': 'gcc',
-    'Darwin': 'clang',
-}
-
 archives = [
     'http://minipkg.eliteraspberries.com/pkgsrc-2015Q3.tar.gz',
     'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-0.3.tar.gz',
@@ -148,7 +143,7 @@ if __name__ == '__main__':
     assert OPSYS in supported_sys, 'unsupported system'
     assert mach in supported_mach, 'unsupported architecture'
     ABI = supported_mach[mach]
-    CC = os.environ.get('CC', None) or default_compiler[OPSYS]
+    CC = os.environ.get('CC', 'clang')
     print('minipkg: HOME:', HOME)
     print('minipkg: OPSYS:', OPSYS)
     print('minipkg: ABI:', ABI)
