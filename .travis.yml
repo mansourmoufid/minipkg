@@ -13,6 +13,6 @@ script:
   - python minipkg.py
   - source ~/.bash_profile
 after_success:
-  - pkg_info
+  - pkgin list
 after_failure:
   - cat *-log.txt
