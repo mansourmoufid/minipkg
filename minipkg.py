@@ -119,7 +119,7 @@ recommended_packages = [
 
 
 def install_binary_package(home, repo, pkg):
-    pkg_url = '/'.join([repo, pkg])
+    pkg_url = '/'.join([repo, 'All', pkg])
     prefix = os.path.join(home, 'pkg')
     ret = subprocess.call(['pkg_add', '-p', prefix, pkg_url])
     assert ret == 0, 'pkg_add'
@@ -237,9 +237,17 @@ if __name__ == '__main__':
         'http://minipkg.eliteraspberries.com/packages',
         OPSYS,
         mach,
-        'All',
     ])
     for pkg in recommended_packages:
         install_binary_package(HOME, repo, pkg)
+    pkgin_config = os.path.join(
+        HOME,
+        'pkg',
+        'etc',
+        'pkgin',
+        'repositories.conf',
+    )
+    with open(pkgin_config, 'w+') as f:
+        print(repo, file=f)
 
     print('minipkg: done!')
