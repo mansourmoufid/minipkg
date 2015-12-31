@@ -245,11 +245,18 @@ if __name__ == '__main__':
     ])
     for pkg in recommended_packages:
         install_binary_package(HOME, repo, pkg)
-    pkgin_config = os.path.join(
+    pkgin_config_dir = os.path.join(
         HOME,
         'pkg',
         'etc',
         'pkgin',
+    )
+    try:
+        os.makedirs(pkgin_config_dir)
+    except OSError:
+        pass
+    pkgin_config = os.path.join(
+        pkgin_config_dir,
         'repositories.conf',
     )
     with open(pkgin_config, 'w+') as f:
