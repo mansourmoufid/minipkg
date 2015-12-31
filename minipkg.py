@@ -45,7 +45,7 @@ hash_algorithm = hashlib.sha256
 
 archive_hashes = [
     'f56599dece253113f64d92c528989b7fcb899f3888c7c9fc40f70f08ac91fea6',
-    'db8ebcd1c12229e9d2da92f888cdb8505f9c486381f3f9b2cd8948a14a04b671',
+    '3ae379b0baa2472b36cbe5ff9a9954f070586cc7fcca7133a2fd57f83bfa467a',
 ]
 
 
