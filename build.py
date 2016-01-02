@@ -40,8 +40,8 @@ if __name__ == '__main__':
     pkgpaths = [pkg.split(' ')[0] for pkg in pkgs]
     for pkgpath in pkgpaths:
         print(pkgpath)
-        os.chdir(localbase)
-        assert os.path.exists(os.path.join(localbase, pkgpath))
+        pkgpath = os.path.join(localbase, pkgpath)
+        os.chdir(pkgpath)
         build(pkgpath)
     bindir = os.path.join(localbase, 'pkg', 'bin')
     sbindir = os.path.join(localbase, 'pkg', 'sbin')
