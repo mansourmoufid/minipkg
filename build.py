@@ -7,8 +7,22 @@ import subprocess
 import sys
 
 
-def build(pkgpath):
+def bmake(pkgpath, target):
     os.chdir(pkgpath)
+    p = subprocess.Popen(
+        ['bmake', target],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    out, err = p.communicate()
+    log = 'bmake-' + target + '-log.txt'
+    with open(log, 'w+') as f:
+        f.write(out)
+        f.write(err)
+    assert p.returncode == 0, '%s %s' % (pkgpath, target)
+
+
+def build(home, pkgpath):
     targets = [
         'build',
         'package',
@@ -17,17 +31,7 @@ def build(pkgpath):
         'clean-depends',
     ]
     for target in targets:
-        p = subprocess.Popen(
-            ['bmake', target],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-        )
-        out, err = p.communicate()
-        log = 'bmake-' + target + '-log.txt'
-        with open(log, 'w+') as f:
-            f.write(out)
-            f.write(err)
-        assert p.returncode == 0, '%s %s' % (pkg, target)
+        bmake(pkgpath, target)
 
 
 if __name__ == '__main__':
@@ -42,7 +46,7 @@ if __name__ == '__main__':
         print(pkgpath)
         pkgpath = os.path.join(localbase, pkgpath)
         os.chdir(pkgpath)
-        build(pkgpath)
+        build(home, pkgpath)
     bindir = os.path.join(localbase, 'pkg', 'bin')
     sbindir = os.path.join(localbase, 'pkg', 'sbin')
     for var in (bindir, sbindir):
