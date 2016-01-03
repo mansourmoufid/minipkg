@@ -66,8 +66,8 @@ if __name__ == '__main__':
     out, err = p.communicate()
     assert p.returncode == 0, 'pkg_info'
     info = out.split('\n')
-    info = filter(lambda s: not 'REQUIRES=' in s, info)
-    info = filter(lambda s: not 'PROVIDES=' in s, info)
+    info = [s for s in info if 'REQUIRES=' not in s]
+    info = [s for s in info if 'PROVIDES=' not in s]
     pkg_summary = os.path.join(localbase, 'packages', 'pkg_summary')
     try:
         os.remove(pkg_summary)
