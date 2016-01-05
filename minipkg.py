@@ -130,6 +130,29 @@ def install_binary_package(home, repo, pkg):
     assert ret == 0, 'pkg_add'
 
 
+default_flags = {
+    'CFLAGS': '-Os',
+    'CXXFLAGS': '-Os',
+}
+
+system_flags = {
+    'Darwin': {
+    },
+    'Linux': {
+    },
+}
+
+
+def merge_flags(x, y):
+    z = x.copy()
+    for (key, val) in y.items():
+        try:
+            z[key] += ' ' + y[key]
+        except KeyError:
+            z[key] = y[key]
+    return z
+
+
 if __name__ == '__main__':
 
     assert len(sys.argv) in (1, 2)
@@ -184,6 +207,8 @@ if __name__ == '__main__':
     sh = sh.split(os.pathsep)[0]
     assert os.path.exists(sh), sh
     os.environ.update({'SH': sh})
+    flags = merge_flags(default_flags, system_flags[OPSYS])
+    os.environ.update(flags)
     bootstrap_path = os.path.join(HOME, 'usr', 'pkgsrc', 'bootstrap')
     if not os.path.exists(os.path.join(bootstrap_path, 'work')):
         os.chdir(bootstrap_path)
