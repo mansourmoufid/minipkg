@@ -15,4 +15,4 @@ script:
 after_success:
   - pkgin list
 after_failure:
-  - cat *-log.txt
+  - cat ~/*-log.txt
