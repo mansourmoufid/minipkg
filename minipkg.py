@@ -2,11 +2,14 @@
 
 """minipkg.py - install pkgsrc
 
-Usage: python minipkg.py [-h | --help] [-v | --version]
+Usage:
+    python minipkg.py
+    python minipkg.py [-h | --help] [-v | --version]
 """
 
 
 from __future__ import print_function
+
 import hashlib
 import os
 import subprocess
@@ -155,7 +158,6 @@ def merge_flags(x, y):
 
 if __name__ == '__main__':
 
-    assert len(sys.argv) in (1, 2)
     if len(sys.argv) == 1:
         pass
     elif len(sys.argv) == 2:
@@ -165,11 +167,11 @@ if __name__ == '__main__':
             print('Supported architectures:', list(supported_mach.keys()))
             sys.exit(os.EX_OK)
         elif sys.argv[1] in ('-v', '--version'):
-            print('minipkg version', __version__)
+            print(os.path.basename(sys.argv[0]), 'version', __version__)
             sys.exit(os.EX_OK)
-        else:
-            print(__doc__)
-            sys.exit(os.EX_USAGE)
+    else:
+        print(__doc__)
+        sys.exit(os.EX_USAGE)
 
     print('minipkg: version', __version__)
 
