@@ -74,7 +74,6 @@ if __name__ == '__main__':
     info = [s for s in info if 'PROVIDES=' not in s]
     pkg_summary = os.path.join(localbase, 'packages', 'pkg_summary')
     try:
-        os.remove(pkg_summary)
         os.remove(pkg_summary + '.gz')
     except OSError:
         pass
