@@ -20,6 +20,10 @@ def bmake(pkgpath, target):
         f.write(out)
         f.write(err)
     assert p.returncode == 0, '%s %s' % (pkgpath, target)
+    try:
+        os.remove(log)
+    except OSError:
+        pass
 
 
 def build(home, pkgpath):
