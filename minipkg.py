@@ -35,7 +35,6 @@ __version__ = '1.1'
 supported_sys = ('Linux', 'Darwin')
 
 supported_mach = {
-    'i386': '32',
     'x86_64': '64',
 }
 
