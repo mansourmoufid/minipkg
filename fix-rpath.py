@@ -12,6 +12,7 @@ from __future__ import print_function
 
 import os
 import platform
+import stat
 import subprocess
 import sys
 
@@ -21,10 +22,6 @@ __copyright__ = 'Copyright 2015, 2016, Mansour Moufid'
 __email__ = 'mansourmoufid@gmail.com'
 __license__ = 'ISC'
 __status__ = 'Development'
-
-
-def isrw(path):
-    return os.access(path, os.R_OK | os.W_OK)
 
 
 def isexe(exe_type, path):
@@ -157,13 +154,15 @@ if __name__ == '__main__':
     lines = sys.stdin.readlines()
     paths = (line.rstrip('\n') for line in lines)
     paths = (path for path in paths if os.path.exists(path))
-    paths = (path for path in paths if isrw(path))
 
     exes = (path for path in paths if isexe(exe_type, path))
     for exe in exes:
         print(exe)
+        mode = os.stat(exe).st_mode
+        os.chmod(exe, mode | stat.S_IRUSR | stat.S_IWUSR)
         if islib(exe):
             fix_rpath_lib(exe)
         else:
             fix_rpath_bin(prefix, exe)
         add_rpath_loader_path(exe)
+        os.chmod(exe, mode)
