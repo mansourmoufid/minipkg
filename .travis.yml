@@ -4,10 +4,6 @@ os:
   - osx
 compiler:
   - clang
-  - gcc
-matrix:
-  allow_failures:
-    - compiler: gcc
 sudo: false
 script:
   - python minipkg.py
