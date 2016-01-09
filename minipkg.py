@@ -231,6 +231,10 @@ if __name__ == '__main__':
             f.write(out)
             f.write(err)
         assert p.returncode == 0, 'bootstrap'
+        try:
+            os.remove(log)
+        except OSError:
+            pass
 
     # Step 5:
     # Set environment variables.
