@@ -34,6 +34,7 @@ def bmake(pkgpath, target):
 
 
 def build(home, pkgpath):
+    os.chdir(pkgpath)
     targets = [
         'build',
         'package',
@@ -70,8 +71,8 @@ if __name__ == '__main__':
     for pkgpath in pkgpaths:
         print(pkgpath)
         pkgpath = os.path.join(localbase, pkgpath)
-        os.chdir(pkgpath)
         build(home, pkgpath)
+
     bindir = os.path.join(localbase, 'pkg', 'bin')
     sbindir = os.path.join(localbase, 'pkg', 'sbin')
     for var in (bindir, sbindir):
