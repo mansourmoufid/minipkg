@@ -96,9 +96,8 @@ def change_install_name(bin, old, new):
     assert ret == 0, 'install_name_tool'
 
 
-def fix_rpath_lib(prefix, lib):
-    basename = path_strip(lib, os.path.join(prefix, 'lib'))
-    basename = path_strip(basename, '@rpath')
+def fix_rpath_lib(lib):
+    basename = os.path.basename(lib)
     rpath = os.path.join('@rpath', basename)
     change_id_name(lib, rpath)
 
@@ -164,7 +163,7 @@ if __name__ == '__main__':
     for exe in exes:
         print(exe)
         if islib(exe):
-            fix_rpath_lib(prefix, exe)
+            fix_rpath_lib(exe)
         else:
             fix_rpath_bin(prefix, exe)
         add_rpath_loader_path(exe)
