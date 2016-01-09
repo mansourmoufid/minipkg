@@ -45,6 +45,20 @@ def build(home, pkgpath):
         bmake(pkgpath, target)
 
 
+def pkg_info(pkgnames):
+    p = subprocess.Popen(
+        ['pkg_info', '-X'] + pkgnames,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    out, _ = p.communicate()
+    assert p.returncode == 0, 'pkg_info'
+    info = out.split('\n')
+    info = [s for s in info if 'REQUIRES=' not in s]
+    info = [s for s in info if 'PROVIDES=' not in s]
+    return info
+
+
 if __name__ == '__main__':
 
     home = os.environ['HOME']
@@ -69,16 +83,7 @@ if __name__ == '__main__':
         pkg.split(' ')[1] if ' ' in pkg else pkg.split('/')[1]
         for pkg in pkgs
     ]
-    p = subprocess.Popen(
-        ['pkg_info', '-X'] + pkgnames,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-    )
-    out, err = p.communicate()
-    assert p.returncode == 0, 'pkg_info'
-    info = out.split('\n')
-    info = [s for s in info if 'REQUIRES=' not in s]
-    info = [s for s in info if 'PROVIDES=' not in s]
+    info = pkg_info(pkgnames)
     pkg_summary = os.path.join(localbase, 'packages', 'pkg_summary')
     try:
         os.remove(pkg_summary + '.gz')
