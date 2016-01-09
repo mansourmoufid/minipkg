@@ -91,10 +91,5 @@ if __name__ == '__main__':
         pass
     with open(pkg_summary, 'w+') as f:
         print('\n'.join(info), file=f)
-    p = subprocess.Popen(
-        ['gzip', pkg_summary],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-    )
-    out, err = p.communicate()
-    assert p.returncode == 0, 'gzip'
+    ret = subprocess.call(['gzip', pkg_summary])
+    assert ret == 0, 'gzip %s' % (pkg_summary)
