@@ -12,6 +12,7 @@ from __future__ import print_function
 
 import os
 import platform
+import re
 import stat
 import subprocess
 import sys
@@ -24,7 +25,7 @@ __license__ = 'ISC'
 __status__ = 'Development'
 
 
-def isexe(exe_type, path):
+def isexe(exe_pat, path):
     p = subprocess.Popen(
         ['file', path],
         stdout=subprocess.PIPE,
@@ -34,7 +35,7 @@ def isexe(exe_type, path):
     if not p.returncode == 0:
         return False
     type = out.split(': ')[1]
-    return exe_type in type
+    return exe_pat.match(type) is not None
 
 
 def islib(path):
@@ -148,14 +149,16 @@ if __name__ == '__main__':
     if system not in supported_systems:
         print('warning: unsupported system', file=sys.stderr)
         sys.exit(0)
-    system_exe_type = {'Darwin': 'Mach-O'}
-    exe_type = system_exe_type[system]
+    system_exe_pat = {
+        'Darwin': 'Mach-O( .*)? (executable|shared library)',
+    }
+    exe_pat = re.compile(system_exe_pat[system])
 
     lines = sys.stdin.readlines()
     paths = (line.rstrip('\n') for line in lines)
     paths = (path for path in paths if os.path.exists(path))
 
-    exes = (path for path in paths if isexe(exe_type, path))
+    exes = (path for path in paths if isexe(exe_pat, path))
     for exe in exes:
         print(exe)
         mode = os.stat(exe).st_mode
