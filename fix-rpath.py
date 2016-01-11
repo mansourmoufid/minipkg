@@ -100,14 +100,14 @@ def fix_rpath_lib(lib):
     change_id_name(lib, rpath)
 
 
-def fix_rpath_bin(prefix, bin):
-    names = install_names(bin)
+def fix_rpath_exe(prefix, exe):
+    names = install_names(exe)
     names = [name for name in names if not issystem(name)]
     for name in names:
         basename = path_strip(name, os.path.join(prefix, 'lib'))
         basename = path_strip(basename, '@rpath')
         rpath = os.path.join('@rpath', basename)
-        change_install_name(bin, name, rpath)
+        change_install_name(exe, name, rpath)
 
 
 def add_rpath(bin, path):
@@ -165,7 +165,6 @@ if __name__ == '__main__':
         os.chmod(exe, mode | stat.S_IRUSR | stat.S_IWUSR)
         if islib(exe):
             fix_rpath_lib(exe)
-        else:
-            fix_rpath_bin(prefix, exe)
+        fix_rpath_exe(prefix, exe)
         add_rpath_loader_path(exe)
         os.chmod(exe, mode)
