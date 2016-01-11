@@ -33,10 +33,57 @@ def bmake(pkgpath, target):
         pass
 
 
+def find(dir, type=None, name=None):
+    if type is None:
+        type = 'f'
+    if name is None:
+        name = '*'
+    p = subprocess.Popen(
+        ['find', dir, '-type', type, '-name', name],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    out, err = p.communicate()
+    assert p.returncode == 0, 'find'
+    lines = out.split('\n')
+    files = [line for line in lines if line]
+    return files
+
+
+cwd = os.path.split(os.path.abspath(__file__))[0]
+
+fix_rpath_script = os.path.join(cwd, 'fix-rpath.py')
+
+assert os.path.exists(fix_rpath_script), fix_rpath_script
+
+
+def fix_rpath(prefix, files):
+    p = subprocess.Popen(
+        [sys.executable, fix_rpath_script, prefix],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    out, err = p.communicate('\n'.join(files))
+    log = os.path.join(prefix, 'fix-rpath-log.txt')
+    with open(log, 'w+') as f:
+        f.write(out)
+        f.write(err)
+    assert p.returncode == 0, 'fix-rpath.py'
+    try:
+        os.remove(log)
+    except OSError:
+        pass
+
+
 def build(home, pkgpath):
     os.chdir(pkgpath)
+    bmake(pkgpath, 'deinstall')
+    bmake(pkgpath, 'clean')
+    bmake(pkgpath, 'build')
+    files = find(os.path.join(pkgpath, 'work'))
+    fix_rpath(os.path.join(home, 'pkg'), files)
     targets = [
-        'build',
         'package',
         'install',
         'clean',
