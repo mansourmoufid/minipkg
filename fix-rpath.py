@@ -17,7 +17,7 @@ import sys
 
 
 __author__ = 'Mansour Moufid'
-__copyright__ = 'Copyright 2015, Mansour Moufid'
+__copyright__ = 'Copyright 2015, 2016, Mansour Moufid'
 __email__ = 'mansourmoufid@gmail.com'
 __license__ = 'ISC'
 __status__ = 'Development'
