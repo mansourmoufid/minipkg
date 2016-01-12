@@ -76,12 +76,25 @@ def fix_rpath(prefix, files):
         pass
 
 
+def wrksrc(pkgpath):
+    os.chdir(pkgpath)
+    p = subprocess.Popen(
+        ['bmake', 'show-var', 'VARNAME=WRKSRC'],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    out, _ = p.communicate()
+    assert p.returncode == 0
+    dir = out.rstrip('\n')
+    return dir
+
+
 def build(home, pkgpath):
     os.chdir(pkgpath)
     bmake(pkgpath, 'deinstall')
     bmake(pkgpath, 'clean')
     bmake(pkgpath, 'build')
-    files = find(os.path.join(pkgpath, 'work'))
+    files = find(wrksrc(pkgpath))
     fix_rpath(os.path.join(home, 'pkg'), files)
     targets = [
         'package',
