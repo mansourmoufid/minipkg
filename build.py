@@ -128,6 +128,12 @@ if __name__ == '__main__':
     lines = sys.stdin.readlines()
     pkgs = [line.rstrip('\n') for line in lines]
     pkgpaths = [pkg.split(' ')[0] for pkg in pkgs]
+    os.environ.update({
+        'DYLD_LIBRARY_PATH': os.pathsep.join([
+            os.path.join(home, 'pkg', 'lib'),
+            os.environ.get('DYLD_LIBRARY_PATH', ''),
+        ]),
+    })
     for pkgpath in pkgpaths:
         print(pkgpath)
         pkgpath = os.path.join(localbase, pkgpath)
