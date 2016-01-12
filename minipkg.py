@@ -116,6 +116,7 @@ recommended_packages = [
     'openssl-1.0.2d.tgz',
     'xz-5.2.1.tgz',
     'libarchive-3.1.2nb1.tgz',
+    'pkg_install-20150901.tgz',
     'pkgin-0.9.3.tgz',
 ]
 

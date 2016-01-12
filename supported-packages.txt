@@ -20,4 +20,5 @@ databases/sqlite3
 security/openssl
 archivers/xz
 archivers/libarchive
+pkgtools/pkg_install
 pkgtools/pkgin
