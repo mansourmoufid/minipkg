@@ -132,13 +132,13 @@ if __name__ == '__main__':
         print(pkgpath)
         pkgpath = os.path.join(localbase, pkgpath)
         build(home, pkgpath)
-
-    bindir = os.path.join(localbase, 'pkg', 'bin')
-    sbindir = os.path.join(localbase, 'pkg', 'sbin')
-    for var in (bindir, sbindir):
-        os.environ.update({
-            'PATH': var + os.pathsep + os.environ['PATH'],
-        })
+    os.environ.update({
+        'PATH': os.pathsep.join([
+            os.path.join(home, 'pkg', 'bin'),
+            os.path.join(home, 'pkg', 'sbin'),
+            os.environ.get('PATH', ''),
+        ]),
+    })
 
     pkgnames = [
         pkg.split(' ')[1] if ' ' in pkg else pkg.split('/')[1]
