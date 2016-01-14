@@ -6,7 +6,6 @@ pkgtools/digest
 devel/libtool-base
 archivers/gzip
 archivers/bzip2
-devel/ncurses
 devel/readline
 devel/zlib
 devel/gettext-lib
