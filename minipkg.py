@@ -40,14 +40,14 @@ supported_mach = {
 
 archives = [
     'http://minipkg.eliteraspberries.com/pkgsrc-2015Q3.tar.gz',
-    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-0.3.tar.gz',
+    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-0.4.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
     'f56599dece253113f64d92c528989b7fcb899f3888c7c9fc40f70f08ac91fea6',
-    '3ae379b0baa2472b36cbe5ff9a9954f070586cc7fcca7133a2fd57f83bfa467a',
+    'a07d3cc8141b18769bec5cdf5afb0e7541055ce84059483d49094dee4b47b94d',
 ]
 
 
