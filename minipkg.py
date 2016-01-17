@@ -102,6 +102,7 @@ recommended_packages = [
     'libtool-base-2.4.2nb10.tgz',
     'gzip-1.6.tgz',
     'bzip2-1.0.6nb1.tgz',
+    'ncurses-6.0.tgz',
     'readline-6.3nb3.tgz',
     'zlib-1.2.8nb3.tgz',
     'gettext-lib-0.19.4.tgz',
