@@ -150,7 +150,7 @@ if __name__ == '__main__':
         print('warning: unsupported system', file=sys.stderr)
         sys.exit(0)
     system_exe_pat = {
-        'Darwin': 'Mach-O( .*)? (executable|shared library)',
+        'Darwin': 'Mach-O( .*)? (executable|shared library|bundle)',
     }
     exe_pat = re.compile(system_exe_pat[system])
 
