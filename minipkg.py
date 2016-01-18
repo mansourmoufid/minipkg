@@ -134,8 +134,8 @@ def install_binary_package(home, repo, pkg):
 
 
 default_flags = {
-    'CFLAGS': '-Os',
-    'CXXFLAGS': '-Os',
+    'CFLAGS': '-fpic -Os',
+    'CXXFLAGS': '-fpic -Os',
 }
 
 system_flags = {
