@@ -127,6 +127,7 @@ if __name__ == '__main__':
 
     lines = sys.stdin.readlines()
     pkgs = [line.rstrip('\n') for line in lines]
+    pkgs = [pkg for pkg in pkgs if pkg]
     pkgpaths = [pkg.split(' ')[0] for pkg in pkgs]
     os.environ.update({
         'DYLD_LIBRARY_PATH': os.pathsep.join([
