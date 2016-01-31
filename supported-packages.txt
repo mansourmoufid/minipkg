@@ -13,3 +13,5 @@ devel/gettext-lib
 lang/perl5 perl
 archivers/xz
 pkgtools/pkg_install
+eliteraspberries/ocaml
+eliteraspberries/ocaml-findlib
