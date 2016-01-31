@@ -107,17 +107,8 @@ recommended_packages = [
     'zlib-1.2.8nb3.tgz',
     'gettext-lib-0.19.4.tgz',
     'perl-5.22.0.tgz',
-    'p5-Scalar-List-Utils-1.42nb1.tgz',
-    'p5-CPAN-Meta-2.150005.tgz',
-    'p5-inc-latest-0.500.tgz',
-    'p5-Module-Build-0.42140.tgz',
-    'p5-Perl4-CoreLibs-0.003nb5.tgz',
-    'sqlite3-3.8.11.1.tgz',
-    'openssl-1.0.2d.tgz',
     'xz-5.2.1.tgz',
-    'libarchive-3.1.2nb1.tgz',
     'pkg_install-20150901.tgz',
-    'pkgin-0.9.3.tgz',
 ]
 
 
