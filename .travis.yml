@@ -7,8 +7,8 @@ compiler:
 sudo: false
 script:
   - python minipkg.py
-  - source ~/.bash_profile
+  - source ~/.minipkg_profile
 after_success:
-  - pkgin list
+  - pkg_info
 after_failure:
   - cat ~/*-log.txt
