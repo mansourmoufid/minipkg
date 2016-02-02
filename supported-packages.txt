@@ -1,17 +1,7 @@
-devel/nbpatch
-textproc/nbsed
-lang/nawk
-net/libfetch
-pkgtools/digest
-devel/libtool-base
-archivers/gzip
 archivers/bzip2
-eliteraspberries/ncurses
-devel/readline
-devel/zlib
-devel/gettext-lib
-lang/perl5 perl
+archivers/gzip
 archivers/xz
-pkgtools/pkg_install
+devel/zlib
+eliteraspberries/ncurses
 eliteraspberries/ocaml
 eliteraspberries/ocaml-findlib

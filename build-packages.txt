@@ -1,0 +1,11 @@
+pkgtools/digest
+devel/nbpatch
+eliteraspberries/ocaml
+eliteraspberries/ocaml-findlib
+eliteraspberries/ncurses
+devel/libtool-base
+devel/zlib
+devel/gettext-lib
+archivers/xz
+archivers/gzip
+archivers/bzip2
