@@ -4,6 +4,8 @@ eliteraspberries/ocaml
 eliteraspberries/ocaml-findlib
 eliteraspberries/ncurses
 devel/libtool-base
+devel/pkg-config
+eliteraspberries/fftw
 devel/zlib
 devel/gettext-lib
 archivers/xz
