@@ -124,27 +124,7 @@ def install_binary_package(home, repo, pkg):
     assert ret == 0, 'pkg_add'
 
 
-default_flags = {
-    'CFLAGS': '-fpic -Os',
-    'CXXFLAGS': '-fpic -Os',
-}
-
-system_flags = {
-    'Darwin': {
-    },
-    'Linux': {
-    },
-}
-
-
-def merge_flags(x, y):
-    z = x.copy()
-    for (key, val) in y.items():
-        try:
-            z[key] += ' ' + y[key]
-        except KeyError:
-            z[key] = y[key]
-    return z
+cwd = os.path.split(os.path.abspath(__file__))[0]
 
 
 if __name__ == '__main__':
@@ -200,8 +180,6 @@ if __name__ == '__main__':
     sh = sh.split(os.pathsep)[0]
     assert os.path.exists(sh), sh
     os.environ.update({'SH': sh})
-    flags = merge_flags(default_flags, system_flags[OPSYS])
-    os.environ.update(flags)
     bootstrap_path = os.path.join(HOME, 'usr', 'pkgsrc', 'bootstrap')
     if not os.path.exists(os.path.join(bootstrap_path, 'work')):
         os.chdir(bootstrap_path)
@@ -213,6 +191,7 @@ if __name__ == '__main__':
                 '--compiler', CC,
                 '--make-jobs', '4',
                 '--prefer-pkgsrc', 'no',
+                '--mk-fragment', os.path.join(cwd, 'mk.conf'),
             ],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
