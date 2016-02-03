@@ -94,21 +94,19 @@ def extract(tgz, path):
 
 
 recommended_packages = [
-    'nbpatch-20100124.tgz',
-    'nbsed-20120308.tgz',
-    'nawk-20121220nb1.tgz',
-    'libfetch-2.36nb1.tgz',
     'digest-20121220.tgz',
+    'nbpatch-20151107.tgz',
+    'ocaml-4.02.3nb3.tgz',
+    'ocaml-findlib-1.6.1nb3.tgz',
+    'ncurses-6.0.tgz',
     'libtool-base-2.4.2nb10.tgz',
+    'pkg-config-0.29.tgz',
+    'fftw-3.3.4.tgz',
+    'zlib-1.2.8nb3.tgz',
+    'gettext-lib-0.19.6.tgz',
+    'xz-5.2.2.tgz',
     'gzip-1.6.tgz',
     'bzip2-1.0.6nb1.tgz',
-    'ncurses-6.0.tgz',
-    'readline-6.3nb3.tgz',
-    'zlib-1.2.8nb3.tgz',
-    'gettext-lib-0.19.4.tgz',
-    'perl-5.22.0.tgz',
-    'xz-5.2.1.tgz',
-    'pkg_install-20150901.tgz',
 ]
 
 
