@@ -97,8 +97,8 @@ def build(home, pkgpath):
     files = find(wrksrc(pkgpath))
     fix_rpath(os.path.join(home, 'pkg'), files)
     targets = [
-        'package',
         'install',
+        'package',
         'clean',
         'clean-depends',
     ]
