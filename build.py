@@ -101,12 +101,13 @@ if __name__ == '__main__':
     pkgs = [line.rstrip('\n') for line in lines]
     pkgs = [pkg for pkg in pkgs if pkg]
     pkgpaths = [pkg.split(' ')[0] for pkg in pkgs]
-    os.environ.update({
-        'DYLD_LIBRARY_PATH': os.pathsep.join([
-            os.path.join(home, 'pkg', 'lib'),
-            os.environ.get('DYLD_LIBRARY_PATH', ''),
-        ]),
-    })
+    for var in ['LD_LIBRARY_PATH', 'DYLD_LIBRARY_PATH']:
+        os.environ.update({
+            var: os.pathsep.join([
+                os.path.join(home, 'pkg', 'lib'),
+                os.environ.get(var, ''),
+            ]),
+        })
     for pkgpath in pkgpaths:
         print(pkgpath)
         pkgpath = os.path.join(localbase, pkgpath)
