@@ -40,14 +40,14 @@ supported_mach = {
 
 archives = [
     'http://minipkg.eliteraspberries.com/pkgsrc-2015Q4.tar.gz',
-    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-0.6.tar.gz',
+    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-0.7.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
     'fe56b3e5c2596a4533180de4c8a145f7e9d0f06b573e6a667770ec59176b18d4',
-    'e084313dc45ca3c0d5c121be57975e04ab28d04b37371c46db831fdca4b3954b',
+    '7e766a1c51bbf1c1c21c66d9a0e76f95974879b2a45abb48d3fe376ffd84daf7',
 ]
 
 
@@ -96,12 +96,12 @@ def extract(tgz, path):
 recommended_packages = [
     'digest-20121220.tgz',
     'nbpatch-20151107.tgz',
-    'ocaml-4.02.3nb3.tgz',
+    'ocaml-4.02.3nb4.tgz',
     'ocaml-findlib-1.6.1nb3.tgz',
     'ncurses-6.0.tgz',
     'libtool-base-2.4.2nb10.tgz',
     'pkg-config-0.29.tgz',
-    'fftw-3.3.4.tgz',
+    'fftw-3.3.4nb2.tgz',
     'zlib-1.2.8nb3.tgz',
     'gettext-lib-0.19.6.tgz',
     'xz-5.2.2.tgz',
