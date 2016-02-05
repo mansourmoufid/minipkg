@@ -14,6 +14,9 @@ __license__ = 'ISC'
 __status__ = 'Development'
 
 
+home = os.environ['HOME']
+
+
 def bmake(pkgpath, target):
     os.chdir(pkgpath)
     p = subprocess.Popen(
@@ -63,7 +66,7 @@ def wrksrc(pkgpath):
     return dir
 
 
-def build(home, pkgpath):
+def build(pkgpath):
     os.chdir(pkgpath)
     targets = [
         'deinstall',
@@ -94,7 +97,6 @@ def pkg_info(pkgnames):
 
 if __name__ == '__main__':
 
-    home = os.environ['HOME']
     localbase = os.path.join(home, 'usr', 'pkgsrc')
 
     lines = sys.stdin.readlines()
@@ -111,7 +113,7 @@ if __name__ == '__main__':
     for pkgpath in pkgpaths:
         print(pkgpath)
         pkgpath = os.path.join(localbase, pkgpath)
-        build(home, pkgpath)
+        build(pkgpath)
     os.environ.update({
         'PATH': os.pathsep.join([
             os.path.join(home, 'pkg', 'bin'),
