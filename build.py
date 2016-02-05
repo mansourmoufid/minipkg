@@ -3,6 +3,7 @@
 from __future__ import print_function
 
 import os
+import platform
 import subprocess
 import sys
 
@@ -95,6 +96,18 @@ def pkg_info(pkgnames):
     return info
 
 
+system = platform.system()
+
+build_env = {
+    'Linux': {
+        'LD_LIBRARY_PATH': os.path.join(home, 'pkg', 'lib'),
+    },
+    'Darwin': {
+        'DYLD_LIBRARY_PATH': os.path.join(home, 'pkg', 'lib'),
+    },
+}
+
+
 if __name__ == '__main__':
 
     localbase = os.path.join(home, 'usr', 'pkgsrc')
@@ -103,13 +116,7 @@ if __name__ == '__main__':
     pkgs = [line.rstrip('\n') for line in lines]
     pkgs = [pkg for pkg in pkgs if pkg]
     pkgpaths = [pkg.split(' ')[0] for pkg in pkgs]
-    for var in ['LD_LIBRARY_PATH', 'DYLD_LIBRARY_PATH']:
-        os.environ.update({
-            var: os.pathsep.join([
-                os.path.join(home, 'pkg', 'lib'),
-                os.environ.get(var, ''),
-            ]),
-        })
+    os.environ.update(build_env[system])
     for pkgpath in pkgpaths:
         print(pkgpath)
         pkgpath = os.path.join(localbase, pkgpath)
