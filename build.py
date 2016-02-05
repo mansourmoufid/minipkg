@@ -104,6 +104,12 @@ build_env = {
     },
     'Darwin': {
         'DYLD_LIBRARY_PATH': os.path.join(home, 'pkg', 'lib'),
+        'MACOSX_DEPLOYMENT_TARGET': '10.6',
+        'SDKROOT': os.path.join(
+            '/Applications/Xcode.app/Contents/Developer/Platforms/',
+            'MacOSX.platform/Developer/SDKs/',
+            'MacOSX10.9.sdk',
+        ),
     },
 }
 
