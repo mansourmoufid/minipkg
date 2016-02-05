@@ -7,7 +7,12 @@ devel/libtool-base
 devel/pkg-config
 eliteraspberries/fftw
 devel/zlib
+lang/perl5
 devel/gettext-lib
+devel/p5-gettext
 archivers/xz
+devel/gettext-tools
+converters/help2man
+devel/autoconf
 archivers/gzip
 archivers/bzip2
