@@ -14,5 +14,6 @@ archivers/xz
 devel/gettext-tools
 converters/help2man
 devel/autoconf
+devel/automake
 archivers/gzip
 archivers/bzip2
