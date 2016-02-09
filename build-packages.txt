@@ -17,5 +17,4 @@ converters/help2man
 devel/autoconf
 devel/automake
 archivers/gzip
-archivers/gtar-base
 archivers/bzip2
