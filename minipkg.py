@@ -170,6 +170,21 @@ if __name__ == '__main__':
     for tgz in map(os.path.basename, archives):
         print('minipkg: extracting', tgz, '...')
         extract(tgz, home_usr)
+    localbase = os.path.join(HOME, 'usr', 'pkgsrc')
+    overwrite_pkgpaths = [
+        'devel/ncurses',
+    ]
+    for pkgpath in overwrite_pkgpaths:
+        cat, pkg = pkgpath.split('/')
+        os.chdir(localbase)
+        ret = subprocess.call(['rm', '-rf', pkgpath])
+        assert ret == 0, 'rm'
+        ret = subprocess.call([
+            'ln', '-s',
+            os.path.join(localbase, 'eliteraspberries', pkg),
+            os.path.join(localbase, cat, pkg),
+        ])
+        assert ret == 0, 'ln'
 
     # Step 4:
     # Bootstrap pkgsrc.
