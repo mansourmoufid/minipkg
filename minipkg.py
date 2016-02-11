@@ -40,14 +40,14 @@ supported_mach = {
 
 archives = [
     'http://minipkg.eliteraspberries.com/pkgsrc-2015Q4.tar.gz',
-    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-0.7.tar.gz',
+    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-0.8.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
     'fe56b3e5c2596a4533180de4c8a145f7e9d0f06b573e6a667770ec59176b18d4',
-    '7e766a1c51bbf1c1c21c66d9a0e76f95974879b2a45abb48d3fe376ffd84daf7',
+    '07ecb95c6d83b44b8ab8bb22c51ab939e2b5a0c51e81267b1454d7ce2c6faf57',
 ]
 
 
@@ -96,15 +96,29 @@ def extract(tgz, path):
 recommended_packages = [
     'digest-20121220.tgz',
     'nbpatch-20151107.tgz',
-    'ocaml-4.02.3nb4.tgz',
+    'perl-5.22.0.tgz',
+    'ocaml-4.02.3nb5.tgz',
     'ocaml-findlib-1.6.1nb3.tgz',
-    'ncurses-6.0.tgz',
     'libtool-base-2.4.2nb10.tgz',
+    'lzip-1.17.tgz',
+    'gmp-6.1.0nb2.tgz',
+    'zarith-1.4.1nb7.tgz',
+    'gettext-lib-0.19.6.tgz',
+    'p5-gettext-1.07.tgz',
+    'xz-5.2.2.tgz',
+    'gettext-tools-0.19.6.tgz',
+    'help2man-1.47.3.tgz',
+    'autoconf-2.69nb6.tgz',
+    'ocamlgraph-1.8.6nb7.tgz',
+    'alt-ergo-0.99.1nb3.tgz',
+    'gtar-base-1.28nb1.tgz',
+    'frama-c-20150201nb6.tgz',
     'pkg-config-0.29.tgz',
     'fftw-3.3.4nb2.tgz',
     'zlib-1.2.8nb3.tgz',
-    'gettext-lib-0.19.6.tgz',
-    'xz-5.2.2.tgz',
+    'ncurses-6.0.tgz',
+    'gmake-4.1nb1.tgz',
+    'automake-1.15nb2.tgz',
     'gzip-1.6.tgz',
     'bzip2-1.0.6nb1.tgz',
 ]
