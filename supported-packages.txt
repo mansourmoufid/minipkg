@@ -9,5 +9,3 @@ devel/libtool-base
 devel/ncurses
 devel/zlib
 eliteraspberries/fftw
-eliteraspberries/ocaml
-eliteraspberries/ocaml-findlib

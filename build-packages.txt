@@ -1,7 +1,5 @@
 pkgtools/digest
 devel/nbpatch
-eliteraspberries/ocaml
-eliteraspberries/ocaml-findlib
 devel/libtool-base
 devel/pkg-config
 eliteraspberries/fftw
