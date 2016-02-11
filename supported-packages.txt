@@ -1,4 +1,5 @@
 archivers/bzip2
+archivers/gtar-base
 archivers/gzip
 archivers/xz
 devel/autoconf
