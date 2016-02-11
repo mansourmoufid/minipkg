@@ -5,8 +5,8 @@ devel/autoconf
 devel/automake
 devel/gmake
 devel/libtool-base
+devel/ncurses
 devel/zlib
 eliteraspberries/fftw
-eliteraspberries/ncurses
 eliteraspberries/ocaml
 eliteraspberries/ocaml-findlib

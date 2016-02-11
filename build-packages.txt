@@ -2,11 +2,11 @@ pkgtools/digest
 devel/nbpatch
 eliteraspberries/ocaml
 eliteraspberries/ocaml-findlib
-eliteraspberries/ncurses
 devel/libtool-base
 devel/pkg-config
 eliteraspberries/fftw
 devel/zlib
+devel/ncurses
 devel/gmake
 lang/perl5
 devel/gettext-lib
