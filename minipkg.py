@@ -186,6 +186,7 @@ if __name__ == '__main__':
         extract(tgz, home_usr)
     localbase = os.path.join(HOME, 'usr', 'pkgsrc')
     overwrite_pkgpaths = [
+        'devel/gmp',
         'devel/ncurses',
     ]
     for pkgpath in overwrite_pkgpaths:
