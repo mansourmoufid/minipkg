@@ -1,4 +1,5 @@
 pkgtools/digest
+eliteraspberries/ncurses
 devel/nbpatch
 lang/perl5
 eliteraspberries/ocaml
@@ -20,7 +21,6 @@ eliteraspberries/frama-c
 devel/pkg-config
 eliteraspberries/fftw
 devel/zlib
-devel/ncurses
 devel/gmake
 devel/automake
 archivers/gzip

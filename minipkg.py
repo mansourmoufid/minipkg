@@ -95,6 +95,7 @@ def extract(tgz, path):
 
 recommended_packages = [
     'digest-20121220.tgz',
+    'ncurses-6.0nb1.tgz',
     'nbpatch-20151107.tgz',
     'perl-5.22.0.tgz',
     'ocaml-4.02.3nb5.tgz',
@@ -116,7 +117,6 @@ recommended_packages = [
     'pkg-config-0.29.tgz',
     'fftw-3.3.4nb2.tgz',
     'zlib-1.2.8nb3.tgz',
-    'ncurses-6.0.tgz',
     'gmake-4.1nb1.tgz',
     'automake-1.15nb2.tgz',
     'gzip-1.6.tgz',

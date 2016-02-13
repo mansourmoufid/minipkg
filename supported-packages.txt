@@ -6,7 +6,7 @@ devel/autoconf
 devel/automake
 devel/gmake
 devel/libtool-base
-devel/ncurses
 devel/zlib
 eliteraspberries/fftw
 eliteraspberries/frama-c
+eliteraspberries/ncurses
