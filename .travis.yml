@@ -10,5 +10,14 @@ script:
   - source ~/.minipkg_profile
 after_success:
   - pkg_info
+  - bzip2 --version
+  - gtar --version
+  - gzip --version
+  - xz --version
+  - autoconf --version
+  - automake --version
+  - gmake --version
+  - libtool --version
+  - frama-c --version
 after_failure:
   - cat ~/*-log.txt
