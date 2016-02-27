@@ -40,14 +40,14 @@ supported_mach = {
 
 archives = [
     'http://minipkg.eliteraspberries.com/pkgsrc-2015Q4.tar.gz',
-    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-0.8.tar.gz',
+    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-0.9.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
     'fe56b3e5c2596a4533180de4c8a145f7e9d0f06b573e6a667770ec59176b18d4',
-    '07ecb95c6d83b44b8ab8bb22c51ab939e2b5a0c51e81267b1454d7ce2c6faf57',
+    '6d882da57b8fc190d88614e6d6c6334e49ef889ebf1b686763a83687af944176',
 ]
 
 
@@ -111,7 +111,7 @@ recommended_packages = [
     'help2man-1.47.3.tgz',
     'autoconf-2.69nb6.tgz',
     'ocamlgraph-1.8.6nb7.tgz',
-    'alt-ergo-0.99.1nb3.tgz',
+    'alt-ergo-1.01.tgz',
     'gtar-base-1.28nb1.tgz',
     'frama-c-20150201nb6.tgz',
     'pkg-config-0.29.tgz',
