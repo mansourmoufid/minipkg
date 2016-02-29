@@ -133,7 +133,7 @@ def install_binary_package(home, repo, pkg):
     pkg_url = '/'.join([repo, 'All', pkg])
     prefix = os.path.join(home, 'pkg')
     ret = subprocess.call([
-        'pkg_add',
+        os.path.join(home, 'pkg', 'sbin', 'pkg_add'),
         '-I',
         '-p', prefix,
         pkg_url,
