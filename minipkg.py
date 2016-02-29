@@ -189,6 +189,7 @@ if __name__ == '__main__':
         'devel/gmp',
         'devel/libffi',
         'devel/ncurses',
+        'devel/readline',
     ]
     for pkgpath in overwrite_pkgpaths:
         cat, pkg = pkgpath.split('/')
