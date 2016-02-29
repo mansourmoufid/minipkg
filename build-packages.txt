@@ -20,6 +20,11 @@ archivers/gtar-base
 eliteraspberries/frama-c
 devel/pkg-config
 eliteraspberries/fftw
+eliteraspberries/parmap
+eliteraspberries/menhir
+eliteraspberries/camlp4
+devel/pcre
+eliteraspberries/coccinelle
 devel/zlib
 devel/gmake
 devel/automake

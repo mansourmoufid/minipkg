@@ -19,5 +19,6 @@ after_success:
   - gmake --version
   - libtool --version
   - frama-c --version
+  - spatch --version
 after_failure:
   - cat ~/*-log.txt
