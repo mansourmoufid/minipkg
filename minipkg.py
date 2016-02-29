@@ -187,6 +187,7 @@ if __name__ == '__main__':
     localbase = os.path.join(HOME, 'usr', 'pkgsrc')
     overwrite_pkgpaths = [
         'devel/gmp',
+        'devel/libffi',
         'devel/ncurses',
     ]
     for pkgpath in overwrite_pkgpaths:
