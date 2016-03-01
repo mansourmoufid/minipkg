@@ -41,14 +41,14 @@ supported_mach = {
 
 archives = [
     'http://minipkg.eliteraspberries.com/pkgsrc-2015Q4.tar.gz',
-    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-0.9.tar.gz',
+    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-1.0.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
     'fe56b3e5c2596a4533180de4c8a145f7e9d0f06b573e6a667770ec59176b18d4',
-    '6d882da57b8fc190d88614e6d6c6334e49ef889ebf1b686763a83687af944176',
+    'de601b528f771e795162df3d64aa376e644e900e0fb3f2dc45399d89c6216d24',
 ]
 
 
@@ -100,7 +100,7 @@ recommended_packages = [
     'nbpatch-20151107.tgz',
     'perl-5.22.0.tgz',
     'ocaml-4.02.3nb5.tgz',
-    'ocaml-findlib-1.6.1nb3.tgz',
+    'ocaml-findlib-1.6.1nb4.tgz',
     'libtool-base-2.4.2nb10.tgz',
     'lzip-1.17.tgz',
     'gmp-6.1.0nb2.tgz',
@@ -114,7 +114,7 @@ recommended_packages = [
     'ocamlgraph-1.8.6nb7.tgz',
     'alt-ergo-1.01.tgz',
     'gtar-base-1.28nb1.tgz',
-    'frama-c-20150201nb6.tgz',
+    'frama-c-20151002.tgz',
     'pkg-config-0.29.tgz',
     'fftw-3.3.4nb2.tgz',
     'parmap-1.0rc7nb4.tgz',
