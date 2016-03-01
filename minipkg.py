@@ -152,6 +152,7 @@ export PATH="$home/pkg/sbin:$PATH"
 export MANPATH="$home/pkg/man:$MANPATH"
 export FRAMAC_LIB="$home/pkg/lib/frama-c"
 export FRAMAC_SHARE="$home/pkg/share/frama-c"
+export COCCINELLE_HOME="$home/pkg/lib/coccinelle"
 """
 
 
