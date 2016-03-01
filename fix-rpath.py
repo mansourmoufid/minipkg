@@ -163,8 +163,11 @@ if __name__ == '__main__':
         print(exe)
         mode = os.stat(exe).st_mode
         os.chmod(exe, mode | stat.S_IRUSR | stat.S_IWUSR)
-        if islib(exe):
-            fix_rpath_lib(exe)
-        fix_rpath_exe(prefix, exe)
-        add_rpath_loader_path(exe)
+        try:
+            if islib(exe):
+                fix_rpath_lib(exe)
+            fix_rpath_exe(prefix, exe)
+            add_rpath_loader_path(exe)
+        except AssertionError:
+            pass
         os.chmod(exe, mode)
