@@ -103,7 +103,7 @@ build_env = {
         'LD_LIBRARY_PATH': os.path.join(home, 'pkg', 'lib'),
     },
     'Darwin': {
-        'DYLD_LIBRARY_PATH': os.path.join(home, 'pkg', 'lib'),
+        'DYLD_FALLBACK_LIBRARY_PATH': os.path.join(home, 'pkg', 'lib'),
         'MACOSX_DEPLOYMENT_TARGET': '10.6',
         'SDKROOT': os.path.join(
             '/Applications/Xcode.app/Contents/Developer/Platforms/',
