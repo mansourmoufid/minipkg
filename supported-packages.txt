@@ -11,3 +11,4 @@ eliteraspberries/coccinelle
 eliteraspberries/fftw
 eliteraspberries/frama-c
 eliteraspberries/ncurses
+eliteraspberries/python
