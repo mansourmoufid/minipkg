@@ -41,14 +41,14 @@ supported_mach = {
 
 archives = [
     'http://minipkg.eliteraspberries.com/pkgsrc-2015Q4.tar.gz',
-    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-1.0.tar.gz',
+    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-1.1.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
     'fe56b3e5c2596a4533180de4c8a145f7e9d0f06b573e6a667770ec59176b18d4',
-    'de601b528f771e795162df3d64aa376e644e900e0fb3f2dc45399d89c6216d24',
+    '16218e99a36997116fa8a30eddd84d7e9cb4df6cdf77d3d6e6f390d05e4b2d9b',
 ]
 
 
@@ -96,26 +96,32 @@ def extract(tgz, path):
 
 recommended_packages = [
     'digest-20121220.tgz',
-    'ncurses-6.0nb1.tgz',
     'nbpatch-20151107.tgz',
-    'perl-5.22.0.tgz',
-    'ocaml-4.02.3nb5.tgz',
-    'ocaml-findlib-1.6.1nb4.tgz',
     'libtool-base-2.4.2nb10.tgz',
-    'lzip-1.17.tgz',
-    'gmp-6.1.0nb2.tgz',
-    'zarith-1.4.1nb7.tgz',
+    'pkg-config-0.29.tgz',
+    'tcl-8.6.4nb2.tgz',
+    'tk-8.6.4nb4.tgz',
+    'ncurses-6.0nb1.tgz',
+    'readline-6.3nb2.tgz',
+    'libffi-3.2.1.tgz',
+    'perl-5.22.0.tgz',
     'gettext-lib-0.19.6.tgz',
     'p5-gettext-1.07.tgz',
     'xz-5.2.2.tgz',
     'gettext-tools-0.19.6.tgz',
     'help2man-1.47.3.tgz',
     'autoconf-2.69nb6.tgz',
+    'sqlite3-3.9.2.tgz',
+    'python-2.7.11.tgz',
+    'ocaml-4.02.3nb5.tgz',
+    'ocaml-findlib-1.6.1nb4.tgz',
+    'lzip-1.17.tgz',
+    'gmp-6.1.0nb2.tgz',
+    'zarith-1.4.1nb7.tgz',
     'ocamlgraph-1.8.6nb7.tgz',
     'alt-ergo-1.01.tgz',
     'gtar-base-1.28nb1.tgz',
     'frama-c-20151002.tgz',
-    'pkg-config-0.29.tgz',
     'fftw-3.3.4nb2.tgz',
     'parmap-1.0rc7nb4.tgz',
     'menhir-20151112nb3.tgz',
