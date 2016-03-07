@@ -20,5 +20,6 @@ after_success:
   - libtool --version
   - frama-c --version
   - spatch --version
+  - python --version
 after_failure:
   - cat ~/*-log.txt
