@@ -55,7 +55,8 @@ if __name__ == '__main__':
     pkgs = [pkg for pkg in pkgs if pkg]
 
     deps = []
-    for dep in reversed(all_depends(home, pkgs)):
-        if dep not in deps:
-            deps.append(dep)
-            print(dep)
+    for pkg in pkgs:
+        for dep in reversed(all_depends(home, [pkg])):
+            if dep not in deps:
+                deps.append(dep)
+                print(dep)
