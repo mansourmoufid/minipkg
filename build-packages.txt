@@ -36,3 +36,4 @@ eliteraspberries/readline
 eliteraspberries/libffi
 databases/sqlite3
 eliteraspberries/python
+textproc/gsed
