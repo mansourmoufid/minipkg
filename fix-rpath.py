@@ -72,12 +72,10 @@ def issystem(path):
     return any(path.startswith(dir) for dir in system_dirs)
 
 
-def path_strip(path, prefix):
+def path_strip(prefix, path):
     if not prefix.endswith(os.path.sep):
         prefix += os.path.sep
-    if path.startswith(prefix):
-        return path[len(prefix):]
-    return path
+    return path.split(prefix)[-1]
 
 
 def change_id_name(lib, id):
@@ -94,8 +92,9 @@ def change_install_name(bin, old, new):
     assert ret == 0, 'install_name_tool'
 
 
-def fix_rpath_lib(lib):
-    basename = os.path.basename(lib)
+def fix_rpath_lib(prefix, lib):
+    basename = path_strip(prefix, lib)
+    basename = path_strip('@rpath', basename)
     rpath = os.path.join('@rpath', basename)
     change_id_name(lib, rpath)
 
@@ -104,8 +103,8 @@ def fix_rpath_exe(prefix, exe):
     names = install_names(exe)
     names = [name for name in names if not issystem(name)]
     for name in names:
-        basename = path_strip(name, os.path.join(prefix, 'lib'))
-        basename = path_strip(basename, '@rpath')
+        basename = path_strip(prefix, name)
+        basename = path_strip('@rpath', basename)
         rpath = os.path.join('@rpath', basename)
         change_install_name(exe, name, rpath)
 
@@ -126,7 +125,7 @@ def add_rpath(bin, path):
 
 
 def add_rpath_loader_path(bin):
-    loader_path = os.path.join('@loader_path', '..', 'lib')
+    loader_path = os.path.join('@loader_path', '..')
     add_rpath(bin, loader_path)
 
 
@@ -165,7 +164,7 @@ if __name__ == '__main__':
         os.chmod(exe, mode | stat.S_IRUSR | stat.S_IWUSR)
         try:
             if islib(exe):
-                fix_rpath_lib(exe)
+                fix_rpath_lib(prefix, exe)
             fix_rpath_exe(prefix, exe)
             add_rpath_loader_path(exe)
         except AssertionError:
