@@ -16,12 +16,13 @@ devel/gmake
 devel/zlib
 eliteraspberries/ocaml
 eliteraspberries/ocaml-findlib
+devel/pcre
+eliteraspberries/pcre-ocaml
 eliteraspberries/parmap
 eliteraspberries/menhir
 eliteraspberries/camlp4
-devel/pcre
-eliteraspberries/coccinelle
 devel/pkg-config
+eliteraspberries/coccinelle
 eliteraspberries/fftw
 archivers/lzip
 eliteraspberries/gmp
