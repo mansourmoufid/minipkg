@@ -37,4 +37,6 @@ eliteraspberries/readline
 eliteraspberries/libffi
 databases/sqlite3
 eliteraspberries/python
+eliteraspberries/python-setuptools
+eliteraspberries/python-wheel
 textproc/gsed

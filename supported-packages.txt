@@ -11,4 +11,6 @@ eliteraspberries/coccinelle
 eliteraspberries/fftw
 eliteraspberries/frama-c
 eliteraspberries/python
+eliteraspberries/python-setuptools
+eliteraspberries/python-wheel
 textproc/gsed
