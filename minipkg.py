@@ -162,6 +162,7 @@ export FRAMAC_LIB="$home/pkg/lib/frama-c"
 export FRAMAC_SHARE="$home/pkg/share/frama-c"
 export COCCINELLE_HOME="$home/pkg/lib/coccinelle"
 export PYTHONHOME="$home/pkg"
+export PERL5LIB="$home/pkg/lib/perl5:$PERL5LIB"
 """
 
 
