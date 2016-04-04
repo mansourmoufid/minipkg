@@ -41,14 +41,14 @@ supported_mach = {
 
 archives = [
     'http://minipkg.eliteraspberries.com/pkgsrc-2015Q4.tar.gz',
-    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-1.2.tar.gz',
+    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-1.3.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
     'fe56b3e5c2596a4533180de4c8a145f7e9d0f06b573e6a667770ec59176b18d4',
-    '0a98b6572be5ee60977ef42bf89f086129841571ede8e11115ed5ee5440f761c',
+    '8a705fc1a11e1fa7ab7f19a69c9fad5b39763a186a75d3c6524976ee86578601',
 ]
 
 
@@ -99,6 +99,7 @@ recommended_packages = [
     'nbpatch-20151107.tgz',
     'libtool-base-2.4.2nb10.tgz',
     'bzip2-1.0.6nb1.tgz',
+    'ncurses-6.0nb2.tgz',
     'gettext-lib-0.19.6.tgz',
     'xz-5.2.2.tgz',
     'gettext-tools-0.19.6.tgz',
@@ -114,7 +115,7 @@ recommended_packages = [
     'ocaml-4.02.3nb7.tgz',
     'ocaml-findlib-1.6.1nb4.tgz',
     'pcre-8.38.tgz',
-    'pcre-ocaml-7.2.2.tgz',
+    'pcre-ocaml-7.2.2nb2.tgz',
     'parmap-1.0rc7nb4.tgz',
     'menhir-20151112nb3.tgz',
     'camlp4-4.02.6nb5.tgz',
@@ -124,16 +125,17 @@ recommended_packages = [
     'lzip-1.17.tgz',
     'gmp-6.1.0nb2.tgz',
     'zarith-1.4.1nb7.tgz',
-    'ocamlgraph-1.8.6nb7.tgz',
+    'ocamlgraph-1.8.6nb8.tgz',
     'alt-ergo-1.01.tgz',
     'frama-c-20151002.tgz',
-    'tcl-8.6.4nb2.tgz',
-    'tk-8.6.4nb4.tgz',
-    'ncurses-6.0nb2.tgz',
+    'tcl-8.6.4nb3.tgz',
+    'tk-8.6.4nb5.tgz',
     'readline-6.3nb2.tgz',
     'libffi-3.2.1.tgz',
     'sqlite3-3.9.2.tgz',
-    'python-2.7.11nb2.tgz',
+    'python-2.7.11nb4.tgz',
+    'python-setuptools-20.4.tgz',
+    'python-wheel-0.29.0.tgz',
     'gsed-4.2.2nb4.tgz',
 ]
 
