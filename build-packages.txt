@@ -14,6 +14,10 @@ devel/autoconf
 devel/automake
 devel/gmake
 devel/zlib
+devel/pkg-config
+eliteraspberries/libarchive
+eliteraspberries/curl
+eliteraspberries/cmake
 eliteraspberries/ocaml
 eliteraspberries/ocaml-findlib
 devel/pcre
@@ -21,7 +25,6 @@ eliteraspberries/pcre-ocaml
 eliteraspberries/parmap
 eliteraspberries/menhir
 eliteraspberries/camlp4
-devel/pkg-config
 eliteraspberries/coccinelle
 eliteraspberries/fftw
 archivers/lzip

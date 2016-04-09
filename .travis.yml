@@ -21,5 +21,6 @@ after_success:
   - frama-c --version
   - spatch --version
   - python --version
+  - cmake --version
 after_failure:
   - cat ~/*-log.txt
