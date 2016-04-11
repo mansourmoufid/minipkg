@@ -14,10 +14,12 @@ devel/autoconf
 devel/automake
 devel/gmake
 devel/zlib
+eliteraspberries/ncurses
 devel/pkg-config
 eliteraspberries/libarchive
 eliteraspberries/curl
 eliteraspberries/cmake
+eliteraspberries/clang
 eliteraspberries/ocaml
 eliteraspberries/ocaml-findlib
 devel/pcre
@@ -35,7 +37,6 @@ eliteraspberries/alt-ergo
 eliteraspberries/frama-c
 eliteraspberries/tcl
 eliteraspberries/tk
-eliteraspberries/ncurses
 eliteraspberries/readline
 eliteraspberries/libffi
 databases/sqlite3

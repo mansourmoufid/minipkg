@@ -7,6 +7,7 @@ devel/automake
 devel/gmake
 devel/libtool-base
 devel/zlib
+eliteraspberries/clang
 eliteraspberries/cmake
 eliteraspberries/coccinelle
 eliteraspberries/fftw
