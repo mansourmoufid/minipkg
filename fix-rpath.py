@@ -100,11 +100,14 @@ def fix_rpath_lib(prefix, lib):
 
 
 def fix_rpath_exe(prefix, exe):
+    cwd = os.path.split(exe)[0]
     names = install_names(exe)
     names = [name for name in names if not issystem(name)]
     for name in names:
-        basename = path_strip(prefix, name)
-        basename = path_strip('@rpath', basename)
+        basename = path_strip('@rpath', name)
+        if basename == os.path.basename(name):
+            basename = os.path.join(cwd, basename)
+        basename = path_strip(prefix, basename)
         rpath = os.path.join('@rpath', basename)
         change_install_name(exe, name, rpath)
 
