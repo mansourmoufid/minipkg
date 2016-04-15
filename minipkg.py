@@ -30,7 +30,7 @@ __copyright__ = 'Copyright 2015, 2016, Mansour Moufid'
 __email__ = 'mansourmoufid@gmail.com'
 __license__ = 'ISC'
 __status__ = 'Development'
-__version__ = '1.7'
+__version__ = '1.8'
 
 
 supported_sys = ('Linux', 'Darwin')
