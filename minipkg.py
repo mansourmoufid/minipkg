@@ -41,14 +41,14 @@ supported_mach = {
 
 archives = [
     'http://minipkg.eliteraspberries.com/pkgsrc-2015Q4.tar.gz',
-    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-1.3.tar.gz',
+    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-1.4.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
     'fe56b3e5c2596a4533180de4c8a145f7e9d0f06b573e6a667770ec59176b18d4',
-    '8a705fc1a11e1fa7ab7f19a69c9fad5b39763a186a75d3c6524976ee86578601',
+    '76fdbe72f6839c17995e6d41696c0529bfe45038ba42565207ceeb92d525b1a5',
 ]
 
 
@@ -99,7 +99,7 @@ recommended_packages = [
     'nbpatch-20151107.tgz',
     'libtool-base-2.4.2nb10.tgz',
     'bzip2-1.0.6nb1.tgz',
-    'ncurses-6.0nb2.tgz',
+    'ncurses-6.0nb3.tgz',
     'gettext-lib-0.19.6.tgz',
     'xz-5.2.2.tgz',
     'gettext-tools-0.19.6.tgz',
@@ -112,6 +112,12 @@ recommended_packages = [
     'automake-1.15nb2.tgz',
     'gmake-4.1nb1.tgz',
     'zlib-1.2.8nb3.tgz',
+    'pkg-config-0.29.tgz',
+    'libarchive-3.1.2.tgz',
+    'curl-7.48.0.tgz',
+    'cmake-3.5.1.tgz',
+    'libcxx-3.8.0nb3.tgz',
+    'clang-3.8.0nb5.tgz',
     'ocaml-4.02.3nb7.tgz',
     'ocaml-findlib-1.6.1nb4.tgz',
     'pcre-8.38.tgz',
@@ -119,21 +125,20 @@ recommended_packages = [
     'parmap-1.0rc7nb4.tgz',
     'menhir-20151112nb3.tgz',
     'camlp4-4.02.6nb5.tgz',
-    'pkg-config-0.29.tgz',
-    'coccinelle-1.0.4nb4.tgz',
+    'coccinelle-1.0.4nb5.tgz',
     'fftw-3.3.4nb2.tgz',
     'lzip-1.17.tgz',
     'gmp-6.1.0nb2.tgz',
     'zarith-1.4.1nb7.tgz',
     'ocamlgraph-1.8.6nb8.tgz',
-    'alt-ergo-1.01.tgz',
+    'alt-ergo-1.01nb2.tgz',
     'frama-c-20151002.tgz',
     'tcl-8.6.4nb3.tgz',
     'tk-8.6.4nb5.tgz',
-    'readline-6.3nb2.tgz',
+    'readline-6.3nb3.tgz',
     'libffi-3.2.1.tgz',
     'sqlite3-3.9.2.tgz',
-    'python-2.7.11nb4.tgz',
+    'python-2.7.11nb5.tgz',
     'python-setuptools-20.4.tgz',
     'python-wheel-0.29.0.tgz',
     'gsed-4.2.2nb4.tgz',
