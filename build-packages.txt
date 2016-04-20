@@ -43,5 +43,6 @@ eliteraspberries/libffi
 databases/sqlite3
 eliteraspberries/python
 eliteraspberries/python-setuptools
+eliteraspberries/numpy
 eliteraspberries/python-wheel
 textproc/gsed
