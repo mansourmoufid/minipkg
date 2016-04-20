@@ -10,6 +10,7 @@ devel/zlib
 eliteraspberries/clang
 eliteraspberries/cmake
 eliteraspberries/coccinelle
+eliteraspberries/cython
 eliteraspberries/fftw
 eliteraspberries/frama-c
 eliteraspberries/numpy
