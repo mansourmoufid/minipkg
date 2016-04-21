@@ -17,4 +17,5 @@ eliteraspberries/numpy
 eliteraspberries/python
 eliteraspberries/python-setuptools
 eliteraspberries/python-wheel
+eliteraspberries/scons
 textproc/gsed

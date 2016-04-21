@@ -46,4 +46,5 @@ eliteraspberries/alt-ergo
 eliteraspberries/frama-c
 eliteraspberries/numpy
 eliteraspberries/python-wheel
+eliteraspberries/scons
 textproc/gsed
