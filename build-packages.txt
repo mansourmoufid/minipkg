@@ -7,11 +7,6 @@ archivers/xz
 devel/gettext-tools
 archivers/gtar-base
 archivers/gzip
-lang/perl5
-devel/p5-gettext
-converters/help2man
-devel/autoconf
-devel/automake
 devel/gmake
 devel/zlib
 eliteraspberries/ncurses
@@ -29,10 +24,14 @@ eliteraspberries/parmap
 eliteraspberries/menhir
 eliteraspberries/camlp4
 eliteraspberries/coccinelle
+lang/perl5
 eliteraspberries/tcl
 eliteraspberries/tk
 eliteraspberries/readline
 eliteraspberries/libffi
+devel/p5-gettext
+converters/help2man
+devel/autoconf
 databases/sqlite3
 eliteraspberries/python
 eliteraspberries/python-setuptools

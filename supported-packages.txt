@@ -2,8 +2,6 @@ archivers/bzip2
 archivers/gtar-base
 archivers/gzip
 archivers/xz
-devel/autoconf
-devel/automake
 devel/gmake
 devel/libtool-base
 devel/zlib
