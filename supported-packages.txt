@@ -11,8 +11,8 @@ eliteraspberries/coccinelle
 eliteraspberries/cython
 eliteraspberries/fftw
 eliteraspberries/frama-c
-eliteraspberries/numpy
 eliteraspberries/python
+eliteraspberries/python-numpy
 eliteraspberries/python-setuptools
 eliteraspberries/python-wheel
 eliteraspberries/scons
