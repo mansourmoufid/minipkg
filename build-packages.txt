@@ -44,6 +44,9 @@ eliteraspberries/ocamlgraph
 eliteraspberries/alt-ergo
 eliteraspberries/frama-c
 eliteraspberries/python-numpy
+eliteraspberries/libpng
+eliteraspberries/jpeg
+eliteraspberries/python-pillow
 eliteraspberries/python-wheel
 eliteraspberries/scons
 textproc/gsed

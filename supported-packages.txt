@@ -13,6 +13,7 @@ eliteraspberries/fftw
 eliteraspberries/frama-c
 eliteraspberries/python
 eliteraspberries/python-numpy
+eliteraspberries/python-pillow
 eliteraspberries/python-setuptools
 eliteraspberries/python-wheel
 eliteraspberries/scons
