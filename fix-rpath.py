@@ -127,8 +127,18 @@ def add_rpath(bin, path):
     assert ret == 0, 'install_name_tool'
 
 
-def add_rpath_loader_path(bin):
-    loader_path = os.path.join('@loader_path', '..')
+def relative_path(path, top):
+    path = path_strip(top, path)
+    base = path.split(os.path.sep)[:-1]
+    dirs = ['..' for dir in base]
+    return os.path.sep.join(dirs)
+
+
+def add_rpath_loader_path(prefix, bin):
+    loader_path = os.path.join(
+        '@loader_path',
+        relative_path(bin, prefix),
+    )
     add_rpath(bin, loader_path)
 
 
@@ -170,7 +180,7 @@ if __name__ == '__main__':
             if islib(exe):
                 fix_rpath_lib(prefix, exe)
             fix_rpath_exe(prefix, exe)
-            add_rpath_loader_path(exe)
+            add_rpath_loader_path(prefix, exe)
         except AssertionError:
             pass
         os.chmod(exe, mode)
