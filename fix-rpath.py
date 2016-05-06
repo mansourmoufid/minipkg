@@ -159,6 +159,7 @@ if __name__ == '__main__':
     lines = sys.stdin.readlines()
     paths = (line.rstrip('\n') for line in lines)
     paths = (path for path in paths if os.path.exists(path))
+    paths = (os.path.abspath(path) for path in paths)
 
     exes = (path for path in paths if isexe(exe_pat, path))
     for exe in exes:
