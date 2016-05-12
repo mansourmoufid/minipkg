@@ -40,14 +40,14 @@ supported_mach = {
 }
 
 archives = [
-    'http://minipkg.eliteraspberries.com/pkgsrc-2015Q4.tar.gz',
+    'http://minipkg.eliteraspberries.com/pkgsrc-2016Q1.tar.gz',
     'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-1.5.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
-    'fe56b3e5c2596a4533180de4c8a145f7e9d0f06b573e6a667770ec59176b18d4',
+    '908e37d837958d6119bfe7b36392f00d7873881bb0a80a6c3ea0c2520ef7bca1',
     '3c01647afe7a123ca4b873b094827998b44381bb8c87fbdf145d802495d3e009',
 ]
 
@@ -95,17 +95,17 @@ def extract(tgz, path):
 
 
 recommended_packages = [
-    'digest-20121220.tgz',
+    'digest-20160304.tgz',
     'nbpatch-20151107.tgz',
-    'libtool-base-2.4.2nb10.tgz',
+    'libtool-base-2.4.2nb12.tgz',
     'bzip2-1.0.6nb1.tgz',
     'ncurses-6.0nb3.tgz',
-    'gettext-lib-0.19.6.tgz',
+    'gettext-lib-0.19.7.tgz',
     'xz-5.2.2.tgz',
-    'gettext-tools-0.19.6.tgz',
+    'gettext-tools-0.19.7.tgz',
     'gtar-base-1.28nb1.tgz',
     'gzip-1.6.tgz',
-    'gmake-4.1nb1.tgz',
+    'gmake-4.1nb2.tgz',
     'zlib-1.2.8nb3.tgz',
     'pkg-config-0.29.tgz',
     'libarchive-3.1.2.tgz',
@@ -115,13 +115,13 @@ recommended_packages = [
     'clang-3.8.0nb6.tgz',
     'ocaml-4.02.3nb9.tgz',
     'ocaml-findlib-1.6.1nb5.tgz',
-    'pcre-8.38.tgz',
+    'pcre-8.38nb2.tgz',
     'pcre-ocaml-7.2.2nb3.tgz',
     'parmap-1.0rc7nb5.tgz',
     'menhir-20151112nb4.tgz',
     'camlp4-4.02.6nb7.tgz',
     'coccinelle-1.0.4nb6.tgz',
-    'perl-5.22.0.tgz',
+    'perl-5.22.1.tgz',
     'tcl-8.6.4nb3.tgz',
     'tk-8.6.4nb5.tgz',
     'readline-6.3nb3.tgz',
@@ -129,7 +129,7 @@ recommended_packages = [
     'p5-gettext-1.07.tgz',
     'help2man-1.47.3.tgz',
     'autoconf-2.69nb6.tgz',
-    'sqlite3-3.9.2.tgz',
+    'sqlite3-3.11.1.tgz',
     'python-2.7.11nb6.tgz',
     'python-setuptools-20.4.tgz',
     'cython-0.24.tgz',
@@ -140,7 +140,10 @@ recommended_packages = [
     'ocamlgraph-1.8.7nb2.tgz',
     'alt-ergo-1.01nb2.tgz',
     'frama-c-20151002.tgz',
-    'numpy-1.11.0.tgz',
+    'python-numpy-1.11.0.tgz',
+    'libpng-1.6.21.tgz',
+    'jpeg-9b.tgz',
+    'python-pillow-3.2.0.tgz',
     'python-wheel-0.29.0.tgz',
     'scons-2.4.1.tgz',
     'gsed-4.2.2nb4.tgz',
