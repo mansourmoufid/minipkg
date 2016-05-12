@@ -225,6 +225,7 @@ if __name__ == '__main__':
         extract(tgz, home_usr)
     localbase = os.path.join(HOME, 'usr', 'pkgsrc')
     overwrite_pkgpaths = [
+        'devel/cmake',
         'devel/gmp',
         'devel/libffi',
         'devel/ncurses',
