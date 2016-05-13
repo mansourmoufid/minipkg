@@ -14,13 +14,14 @@ after_success:
   - gtar --version
   - gzip --version
   - xz --version
-  - autoconf --version
-  - automake --version
   - gmake --version
   - libtool --version
   - frama-c --version
   - spatch --version
   - python --version
   - cmake --version
+  - clang --version
+  - cython --version
+  - scons --version
 after_failure:
   - cat ~/*-log.txt
