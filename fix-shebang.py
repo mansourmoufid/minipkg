@@ -42,10 +42,8 @@ def parse_shebang(shebang):
         return env
     if os.path.basename(first) == 'env':
         interp = env[1]
-    elif os.path.exists(first):
-        interp = first
     else:
-        return env
+        interp = first
     return ['/usr/bin/env', os.path.basename(interp)]
 
 
