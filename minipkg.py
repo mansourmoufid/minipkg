@@ -41,14 +41,14 @@ supported_mach = {
 
 archives = [
     'http://minipkg.eliteraspberries.com/pkgsrc-2016Q1.tar.gz',
-    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-1.6.tar.gz',
+    'http://minipkg.eliteraspberries.com/pkgsrc-eliteraspberries-1.7.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
     '908e37d837958d6119bfe7b36392f00d7873881bb0a80a6c3ea0c2520ef7bca1',
-    'e48a076d59c4cd481a4f4198a5892d2bd03a36c45f3d0b2748eabd5f2250be24',
+    '8f486b2e72b453a5026047f93c3a2a0775af0f2ed318dd44956855fd31522dbf',
 ]
 
 
@@ -119,18 +119,18 @@ recommended_packages = [
     'pcre-ocaml-7.2.2nb3.tgz',
     'parmap-1.0rc7nb5.tgz',
     'menhir-20151112nb4.tgz',
-    'camlp4-4.02.6nb7.tgz',
+    'camlp4-4.02.7.tgz',
     'coccinelle-1.0.4nb6.tgz',
     'perl-5.22.1.tgz',
-    'tcl-8.6.4nb3.tgz',
-    'tk-8.6.4nb5.tgz',
+    'tcl-8.6.5.tgz',
+    'tk-8.6.5.tgz',
     'readline-6.3nb3.tgz',
     'libffi-3.2.1.tgz',
     'p5-gettext-1.07.tgz',
     'help2man-1.47.3.tgz',
     'autoconf-2.69nb6.tgz',
     'sqlite3-3.11.1.tgz',
-    'python-2.7.11nb6.tgz',
+    'python-2.7.11nb7.tgz',
     'python-setuptools-20.4.tgz',
     'cython-0.24.tgz',
     'fftw-3.3.4nb2.tgz',
@@ -145,7 +145,7 @@ recommended_packages = [
     'jpeg-9b.tgz',
     'python-pillow-3.2.0.tgz',
     'python-wheel-0.29.0.tgz',
-    'scons-2.4.1.tgz',
+    'scons-2.5.0.tgz',
     'gsed-4.2.2nb4.tgz',
 ]
 
