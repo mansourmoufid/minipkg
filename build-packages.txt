@@ -10,7 +10,7 @@ archivers/gzip
 devel/gmake
 devel/zlib
 eliteraspberries/ncurses
-devel/pkg-config
+devel/pkgconf
 eliteraspberries/libarchive
 eliteraspberries/curl
 eliteraspberries/cmake
