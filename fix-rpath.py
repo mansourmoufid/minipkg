@@ -166,13 +166,11 @@ if __name__ == '__main__':
     }
     exe_pat = re.compile(system_exe_pat[system])
 
-    lines = sys.stdin.readlines()
-    paths = (line.rstrip('\n') for line in lines)
-    paths = (path for path in paths if os.path.exists(path))
-    paths = (os.path.abspath(path) for path in paths)
-
-    exes = (path for path in paths if isexe(exe_pat, path))
-    for exe in exes:
+    for line in sys.stdin:
+        path = line.rstrip('\n')
+        if not os.path.exists(path) or not isexe(exe_pat, path):
+            continue
+        exe = os.path.abspath(path)
         print(exe)
         mode = os.stat(exe).st_mode
         os.chmod(exe, mode | stat.S_IRUSR | stat.S_IWUSR)
