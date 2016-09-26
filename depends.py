@@ -28,12 +28,18 @@ def depends(home, pkgpath):
     return deps
 
 
+global_deps = []
+
+
 def all_depends(home, pkgs):
     if pkgs == []:
         return []
     else:
         pkg = pkgs.pop(0)
-        deps = depends(home, pkg)
+        if pkg in global_deps:
+            deps = []
+        else:
+            deps = depends(home, pkg)
         return [pkg] + all_depends(home, deps + pkgs)
 
 
@@ -55,6 +61,6 @@ if __name__ == '__main__':
         if not pkg:
             continue
         for dep in reversed(all_depends(home, [pkg])):
-            if dep not in deps:
-                deps.append(dep)
+            if dep not in global_deps:
+                global_deps.append(dep)
                 print(dep)
