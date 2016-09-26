@@ -50,12 +50,10 @@ if __name__ == '__main__':
 
     home = os.environ['HOME']
 
-    lines = sys.stdin.readlines()
-    pkgs = [line.rstrip('\n') for line in lines]
-    pkgs = [pkg for pkg in pkgs if pkg]
-
-    deps = []
-    for pkg in pkgs:
+    for line in sys.stdin:
+        pkg = line.rstrip('\n')
+        if not pkg:
+            continue
         for dep in reversed(all_depends(home, [pkg])):
             if dep not in deps:
                 deps.append(dep)
