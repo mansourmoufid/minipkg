@@ -11,6 +11,7 @@ eliteraspberries/coccinelle
 eliteraspberries/cython
 eliteraspberries/fftw
 eliteraspberries/frama-c
+eliteraspberries/libarchive
 eliteraspberries/python
 eliteraspberries/python-numpy
 eliteraspberries/python-pillow
