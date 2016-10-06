@@ -12,6 +12,8 @@ devel/zlib
 eliteraspberries/ncurses
 devel/pkgconf
 eliteraspberries/libarchive
+eliteraspberries/mbedtls
+eliteraspberries/ca-certificates
 eliteraspberries/curl
 eliteraspberries/cmake
 eliteraspberries/libcxx

@@ -8,6 +8,7 @@ devel/zlib
 eliteraspberries/clang
 eliteraspberries/cmake
 eliteraspberries/coccinelle
+eliteraspberries/curl
 eliteraspberries/cython
 eliteraspberries/fftw
 eliteraspberries/frama-c
