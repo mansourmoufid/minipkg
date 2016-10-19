@@ -7,7 +7,6 @@
 from __future__ import print_function
 
 import os
-import stat
 import sys
 import tempfile
 
@@ -60,11 +59,6 @@ if __name__ == '__main__':
         st = os.stat(path)
         if st.st_size < len('#!.\n'):
             continue
-        mode = st.st_mode
-        try:
-            os.chmod(path, mode | stat.S_IRUSR | stat.S_IWUSR)
-        except OSError:
-            continue
 
         with open(path, 'r') as f:
             shebang = read_shebang(f)
@@ -82,5 +76,4 @@ if __name__ == '__main__':
                 os.write(tmp, x)
             os.close(tmp)
         os.rename(tmpname, path)
-
-        os.chmod(path, mode)
+        os.chmod(path, int('755', 8))
