@@ -65,18 +65,20 @@ def uname():
     return (sys, mach)
 
 
-def fetch(url, hash):
-    filename = os.path.basename(url)
+def fetch(url, path=None, hash=None):
+    filename = path or os.path.abspath(os.path.basename(url))
+    subprocess.check_call(['mkdir', '-p', os.path.dirname(filename)])
     if not os.path.exists(filename):
         req = url_request(url)
         res = url_open(req)
         dat = res.read()
-        with open(filename, 'wb+') as f:
+        with open(filename, 'w') as f:
             f.write(dat)
-    with open(filename, 'r') as f:
-        dat = f.read()
-    h = hash_algorithm(dat)
-    assert h.hexdigest() == hash
+    if hash:
+        with open(filename, 'r') as f:
+            dat = f.read()
+        h = hash_algorithm(dat)
+        assert h.hexdigest() == hash
 
 
 def extract(tgz, path):
@@ -208,8 +210,8 @@ if __name__ == '__main__':
     # Step 2:
     # Fetch the pkgsrc archive.
     for (archive, hash) in zip(archives, archive_hashes):
-        print('minipkg: fetching', archive, '...')
-        fetch(archive, hash)
+        print('minipkg: fetching', os.path.basename(archive), '...')
+        fetch(archive, hash=hash)
 
     # Step 3:
     # Extract the pkgsrc archive.
