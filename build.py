@@ -3,7 +3,6 @@
 from __future__ import print_function
 
 import os
-import platform
 import subprocess
 import sys
 
@@ -96,24 +95,6 @@ def pkg_info(pkgnames):
     return info
 
 
-system = platform.system()
-
-build_env = {
-    'Linux': {
-        'LD_LIBRARY_PATH': os.path.join(home, 'pkg', 'lib'),
-    },
-    'Darwin': {
-        'DYLD_FALLBACK_LIBRARY_PATH': os.path.join(home, 'pkg', 'lib'),
-        'MACOSX_DEPLOYMENT_TARGET': '10.7',
-        'SDKROOT': os.path.join(
-            '/Applications/Xcode.app/Contents/Developer/Platforms/',
-            'MacOSX.platform/Developer/SDKs/',
-            'MacOSX10.9.sdk',
-        ),
-    },
-}
-
-
 if __name__ == '__main__':
 
     localbase = os.path.join(home, 'usr', 'pkgsrc')
@@ -122,7 +103,6 @@ if __name__ == '__main__':
     pkgs = [line.rstrip('\n') for line in lines]
     pkgs = [pkg for pkg in pkgs if pkg]
     pkgpaths = [pkg.split(' ')[0] for pkg in pkgs]
-    os.environ.update(build_env[system])
     for pkgpath in pkgpaths:
         print(pkgpath)
         pkgpath = os.path.join(localbase, pkgpath)
