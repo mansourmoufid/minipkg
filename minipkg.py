@@ -55,19 +55,13 @@ archive_hashes = [
 
 
 def which(name):
-    p = subprocess.Popen(['which', name], stdout=subprocess.PIPE)
-    p.wait()
-    if not p.returncode == 0:
-        return None
-    out = p.stdout.read()
+    out = subprocess.check_output(['which', name], universal_newlines=True)
     return out.rstrip('\n')
 
 
 def uname():
-    p = subprocess.Popen(['uname', '-sm'], stdout=subprocess.PIPE)
-    p.wait()
-    assert p.returncode == 0, 'uname'
-    (sys, mach) = p.stdout.read().split()
+    out = subprocess.check_output(['uname', '-sm'], universal_newlines=True)
+    (sys, mach) = out.split()
     return (sys, mach)
 
 
@@ -90,10 +84,8 @@ def extract(tgz, path):
         os.mkdir(path)
     tar = tgz.rstrip('.gz')
     if not os.path.exists(tar):
-        err = subprocess.call(['gunzip', tgz])
-        assert err == 0, 'gunzip'
-    err = subprocess.call(['tar', '-xf', tar, '-C', path])
-    assert err == 0, 'tar'
+        subprocess.check_call(['gunzip', tgz])
+    subprocess.check_call(['tar', '-xf', tar, '-C', path])
 
 
 recommended_packages = [
@@ -155,13 +147,12 @@ recommended_packages = [
 def install_binary_package(home, repo, pkg):
     pkg_url = '/'.join([repo, 'All', pkg])
     prefix = os.path.join(home, 'pkg')
-    ret = subprocess.call([
+    subprocess.check_call([
         os.path.join(home, 'pkg', 'sbin', 'pkg_add'),
         '-I',
         '-p', prefix,
         pkg_url,
     ])
-    assert ret == 0, 'pkg_add'
 
 
 cwd = os.path.split(os.path.abspath(__file__))[0]
@@ -237,14 +228,12 @@ if __name__ == '__main__':
     for pkgpath in overwrite_pkgpaths:
         cat, pkg = pkgpath.split('/')
         os.chdir(localbase)
-        ret = subprocess.call(['rm', '-rf', pkgpath])
-        assert ret == 0, 'rm'
-        ret = subprocess.call([
+        subprocess.check_call(['rm', '-rf', pkgpath])
+        subprocess.check_call([
             'ln', '-s',
             os.path.join(localbase, 'eliteraspberries', pkg),
             os.path.join(localbase, cat, pkg),
         ])
-        assert ret == 0, 'ln'
 
     # Step 4:
     # Bootstrap pkgsrc.
