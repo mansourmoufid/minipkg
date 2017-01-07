@@ -1,19 +1,29 @@
 #!/bin/sh
-SPATCH_ARGS="--very-quiet --in-place --timeout 120"
-FILES="$(find ${WRKSRC} -type f -name '*.[ch]')"
-for sp in ${LOCALPATCHES}/${PKGPATH}/*.cocci ${SPATCHES}/*.cocci; do
+LANG=C
+SED="/usr/bin/sed -i.orig"
+SPATCH="spatch --very-quiet --timeout 120 --in-place"
+for sp in ${LOCALPATCHES}/${PKGPATH}/*.sed ${SPATCHES}/*.sed \
+    ${LOCALPATCHES}/${PKGPATH}/*.cocci ${SPATCHES}/*.cocci; do
     if ! test -f "${sp}"; then
         continue
     fi
+    ext=".${sp##*.}"
     spp="${WRKSRC}/$(basename ${sp}).patch"
     for i in 1 2 3 4 5 6 7 8 9 10; do
         rm -f "${spp}"
         touch "${spp}"
-        for f in ${FILES}; do
+        find "${WRKSRC}" | grep '\.\(c\|h\)$' | while read f; do
             if ! test -f "${f}"; then
                 continue
             fi
-            spatch ${SPATCH_ARGS} --sp-file "${sp}" "${f}" | tee -a "${spp}"
+            cp -f "${f}" "${f}.orig"
+            if [ "${ext}" == ".sed" ]; then
+                ${SED} -f "${sp}" "${f}"
+            fi
+            if [ "${ext}" == ".cocci" ]; then
+                ${SPATCH} --sp-file "${sp}" "${f}" >/dev/null
+            fi
+            diff -u "${f}.orig" "${f}" | tee -a "${spp}"
         done
         if ! test -s "${spp}"; then
             break
