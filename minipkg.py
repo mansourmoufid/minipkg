@@ -39,11 +39,11 @@ supported_mach = {
     'x86_64': '64',
 }
 
-host = 'https://s3.amazonaws.com/minipkg.eliteraspberries.com/'
+host = 'https://s3.amazonaws.com/minipkg.eliteraspberries.com'
 
 archives = [
-    host + 'pkgsrc-2016Q2.tar.gz',
-    host + 'pkgsrc-eliteraspberries-1.7.tar.gz',
+    host + '/pkgsrc-2016Q2.tar.gz',
+    host + '/pkgsrc-eliteraspberries-1.7.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
@@ -146,14 +146,13 @@ recommended_packages = [
 ]
 
 
-def install_binary_package(home, repo, pkg):
-    pkg_url = '/'.join([repo, 'All', pkg])
-    prefix = os.path.join(home, 'pkg')
+def install_binary_package(home, pkg):
+    pkg_path = os.path.join(home, 'usr', 'pkgsrc', 'packages', 'All', pkg)
     subprocess.check_call([
         os.path.join(home, 'pkg', 'sbin', 'pkg_add'),
         '-I',
         '-p', prefix,
-        pkg_url,
+        pkg_path,
     ])
 
 
@@ -296,12 +295,16 @@ if __name__ == '__main__':
 
     # Step 6:
     # Install recommended binary packages.
+    print('minipkg: fetching packages ...')
+    repo = '/'.join([host, 'packages', OPSYS, mach])
+    for pkg in recommended_packages:
+        print('minipkg: fetching', pkg, '...')
+        fetch(
+            '/'.join([repo, 'All', pkg]),
+            path=os.path.join(localbase, 'packages', 'All', pkg),
+            hash=None,
+        )
     print('minipkg: installing packages ...')
-    repo = '/'.join([
-        host + 'packages',
-        OPSYS,
-        mach,
-    ])
     for pkg in recommended_packages:
         install_binary_package(HOME, repo, pkg)
 
