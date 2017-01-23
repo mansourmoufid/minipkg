@@ -2,8 +2,10 @@
 LANG=C
 SED="/usr/bin/sed -i.orig"
 SPATCH="spatch --very-quiet --timeout 120 --in-place"
-for sp in ${LOCALPATCHES}/${PKGPATH}/*.sed ${SPATCHES}/*.sed \
-    ${LOCALPATCHES}/${PKGPATH}/*.cocci ${SPATCHES}/*.cocci; do
+find -L "${LOCALPATCHES}/${PKGPATH}" "${SPATCHES}" | \
+    grep '\.\(sed\|cocci\)' | \
+    awk -F/ '{print $0 " " $NF}' | sort -k2 | awk '{print $1}' | \
+    while read sp; do
     if ! test -f "${sp}"; then
         continue
     fi
