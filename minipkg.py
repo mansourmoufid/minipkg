@@ -155,13 +155,10 @@ recommended_packages = [
 
 
 def install_binary_package(home, pkg):
+    prefix = os.path.join(home, 'pkg')
+    pkg_add = os.path.join(home, 'pkg', 'sbin', 'pkg_add')
     pkg_path = os.path.join(home, 'usr', 'pkgsrc', 'packages', 'All', pkg)
-    subprocess.check_call([
-        os.path.join(home, 'pkg', 'sbin', 'pkg_add'),
-        '-I',
-        '-p', prefix,
-        pkg_path,
-    ])
+    subprocess.check_call([pkg_add, '-I', '-p', prefix, pkg_path])
 
 
 cwd = os.path.split(os.path.abspath(__file__))[0]
@@ -358,6 +355,6 @@ if __name__ == '__main__':
         )
     for pkg in recommended_packages:
         print('minipkg: installing', pkg, '...')
-        install_binary_package(HOME, repo, pkg)
+        install_binary_package(HOME, pkg)
 
     print('minipkg: done!')
