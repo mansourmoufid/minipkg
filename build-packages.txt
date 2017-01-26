@@ -1,5 +1,5 @@
-pkgtools/digest
 devel/nbpatch
+pkgtools/digest
 devel/libtool-base
 archivers/bzip2
 archivers/gzip

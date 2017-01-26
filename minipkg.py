@@ -94,59 +94,64 @@ def extract(tgz, path):
     subprocess.check_call(['tar', '-xf', tar, '-C', path])
 
 
-recommended_packages = [
-    'digest-20160304.tgz',
-    'nbpatch-20151107.tgz',
-    'libtool-base-2.4.2nb12.tgz',
+all_packages = [
+    'alt-ergo-1.01nb2.tgz',
+    'autoconf-2.69nb7.tgz',
     'bzip2-1.0.6nb1.tgz',
-    'ncurses-6.0nb3.tgz',
-    'gettext-lib-0.19.7.tgz',
-    'xz-5.2.2.tgz',
-    'gettext-tools-0.19.7.tgz',
-    'gtar-base-1.28nb1.tgz',
-    'gzip-1.6.tgz',
-    'gmake-4.1nb2.tgz',
-    'zlib-1.2.8nb3.tgz',
-    'pkg-config-0.29.tgz',
-    'libarchive-3.1.2.tgz',
-    'curl-7.48.0.tgz',
-    'cmake-3.5.1.tgz',
-    'libcxx-3.8.0nb3.tgz',
+    'ca-certificates-20161003.tgz',
+    'camlp4-4.02.7.tgz',
     'clang-3.8.0nb6.tgz',
+    'cmake-3.7.0nb2.tgz',
+    'coccinelle-1.0.6nb2.tgz',
+    'curl-7.52.1.tgz',
+    'cython-0.25.2.tgz',
+    'digest-20160304.tgz',
+    'fftw-3.3.6.tgz',
+    'frama-c-20151002nb2.tgz',
+    'gettext-lib-0.19.8.1.tgz',
+    'gettext-tools-0.19.8.1.tgz',
+    'gmake-4.1nb3.tgz',
+    'gmp-6.1.0nb2.tgz',
+    'gsed-4.2.2nb4.tgz',
+    'gzip-1.6.tgz',
+    'help2man-1.47.4.tgz',
+    'jpeg-9b.tgz',
+    'libarchive-3.1.2.tgz',
+    'libcxx-3.8.0nb3.tgz',
+    'libffi-3.2.1nb2.tgz',
+    'libpng-1.6.26.tgz',
+    'libtool-base-2.4.2nb13.tgz',
+    'lzip-1.18.tgz',
+    'mbedtls-2.4.0.tgz',
+    'menhir-20151112nb4.tgz',
+    'nbpatch-20151107.tgz',
+    'ncurses-6.0nb3.tgz',
     'ocaml-4.02.3nb9.tgz',
     'ocaml-findlib-1.6.1nb5.tgz',
-    'pcre-8.38nb2.tgz',
-    'pcre-ocaml-7.2.2nb3.tgz',
-    'parmap-1.0rc7nb5.tgz',
-    'menhir-20151112nb4.tgz',
-    'camlp4-4.02.7.tgz',
-    'coccinelle-1.0.4nb6.tgz',
-    'perl-5.22.1.tgz',
-    'tcl-8.6.5.tgz',
-    'tk-8.6.5.tgz',
-    'readline-6.3nb3.tgz',
-    'libffi-3.2.1.tgz',
-    'p5-gettext-1.07.tgz',
-    'help2man-1.47.3.tgz',
-    'autoconf-2.69nb6.tgz',
-    'sqlite3-3.11.1.tgz',
-    'python-2.7.11nb7.tgz',
-    'python-setuptools-20.4.tgz',
-    'cython-0.24.tgz',
-    'fftw-3.3.4nb2.tgz',
-    'lzip-1.17.tgz',
-    'gmp-6.1.0nb2.tgz',
-    'zarith-1.4.1nb7.tgz',
     'ocamlgraph-1.8.7nb2.tgz',
-    'alt-ergo-1.01nb2.tgz',
-    'frama-c-20151002.tgz',
+    'p5-gettext-1.07nb1.tgz',
+    'parmap-1.0rc7nb5.tgz',
+    'pcre-8.39.tgz',
+    'pcre-ocaml-7.2.2nb3.tgz',
+    'perl-5.24.0.tgz',
+    'pkgconf-1.0.1.tgz',
+    'python-2.7.13.tgz',
+    'python-docopt-0.6.2.tgz',
     'python-numpy-1.11.0.tgz',
-    'libpng-1.6.21.tgz',
-    'jpeg-9b.tgz',
-    'python-pillow-3.2.0.tgz',
-    'python-wheel-0.29.0.tgz',
-    'scons-2.5.0.tgz',
-    'gsed-4.2.2nb4.tgz',
+    'python-pillow-3.3.0nb3.tgz',
+    'python-setuptools-28.8.0.tgz',
+    'readline-6.3nb3.tgz',
+    'scons-2.5.1.tgz',
+    'sqlite3-3.15.2nb2.tgz',
+    'tcl-8.6.5nb2.tgz',
+    'tk-8.6.5.tgz',
+    'xz-5.2.2.tgz',
+    'zarith-1.4.1nb7.tgz',
+    'zlib-1.2.8nb3.tgz',
+]
+
+recommended_packages = [
+    'clang-*',
 ]
 
 
@@ -319,18 +324,18 @@ if __name__ == '__main__':
         f.write(profile)
 
     # Step 6:
-    # Install recommended binary packages.
+    # Install binary packages.
     print('minipkg: fetching packages ...')
     repo = '/'.join([host, 'packages', OPSYS, mach])
-    for pkg in recommended_packages:
+    for pkg in all_packages:
         print('minipkg: fetching', pkg, '...')
         fetch(
             '/'.join([repo, 'All', pkg]),
             path=os.path.join(localbase, 'packages', 'All', pkg),
             hash=None,
         )
-    print('minipkg: installing packages ...')
     for pkg in recommended_packages:
+        print('minipkg: installing', pkg, '...')
         install_binary_package(HOME, repo, pkg)
 
     print('minipkg: done!')
