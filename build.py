@@ -3,6 +3,7 @@
 from __future__ import print_function
 
 import os
+import platform
 import subprocess
 import sys
 
@@ -15,6 +16,7 @@ __status__ = 'Development'
 
 
 home = os.environ['HOME']
+system = platform.system()
 
 
 def bmake(pkgpath, target):
@@ -114,6 +116,15 @@ if __name__ == '__main__':
             os.environ.get('PATH', ''),
         ]),
     })
+    library_path = os.path.join(home, 'pkg', 'lib')
+    if system == 'Darwin':
+        os.environ.update({
+            'DYLD_FALLBACK_LIBRARY_PATH': library_path,
+        })
+    if system == 'Linux':
+        os.environ.update({
+            'LD_LIBRARY_PATH': library_path,
+        })
 
     pkgnames = [
         pkg.split(' ')[1] if ' ' in pkg else pkg.split('/')[1]

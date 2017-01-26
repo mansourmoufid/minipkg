@@ -12,7 +12,6 @@ from __future__ import print_function
 
 import hashlib
 import os
-import platform
 import string
 import subprocess
 import sys
@@ -182,11 +181,9 @@ export CURL_CA_BUNDLE="$$HOME/pkg/etc/ca-certificates.pem"
 """
 
 minipkg_profile_template_linux = """
-export LD_LIBRARY_PATH="$$HOME/pkg/lib"
 """
 
 minipkg_profile_template_darwin = """
-export DYLD_FALLBACK_LIBRARY_PATH="$$HOME/pkg/lib"
 export MACOSX_DEPLOYMENT_TARGET="10.7"
 export SDKROOT="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk"
 """
