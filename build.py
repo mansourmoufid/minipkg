@@ -71,13 +71,11 @@ def wrksrc(pkgpath):
 def build(pkgpath):
     os.chdir(pkgpath)
     targets = [
-        'deinstall',
         'clean',
         'build',
-        'install',
         'package',
+        'install',
         'clean',
-        'clean-depends',
     ]
     for target in targets:
         bmake(pkgpath, target)
