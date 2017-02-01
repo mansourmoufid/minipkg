@@ -98,6 +98,15 @@ def pkg_info(pkgnames):
 if __name__ == '__main__':
 
     localbase = os.path.join(home, 'usr', 'pkgsrc')
+    library_path = os.path.join(home, 'pkg', 'lib')
+    if system == 'Darwin':
+        os.environ.update({
+            'DYLD_LIBRARY_PATH': library_path,
+        })
+    if system == 'Linux':
+        os.environ.update({
+            'LD_LIBRARY_PATH': library_path,
+        })
 
     lines = sys.stdin.readlines()
     pkgs = [line.rstrip('\n') for line in lines]
@@ -114,15 +123,6 @@ if __name__ == '__main__':
             os.environ.get('PATH', ''),
         ]),
     })
-    library_path = os.path.join(home, 'pkg', 'lib')
-    if system == 'Darwin':
-        os.environ.update({
-            'DYLD_FALLBACK_LIBRARY_PATH': library_path,
-        })
-    if system == 'Linux':
-        os.environ.update({
-            'LD_LIBRARY_PATH': library_path,
-        })
 
     pkgnames = [
         pkg.split(' ')[1] if ' ' in pkg else pkg.split('/')[1]
