@@ -332,16 +332,10 @@ if __name__ == '__main__':
         })
         with open(minipkg_profile, 'a+') as f:
             f.write(profile_linux)
-    dotfile = os.path.join(HOME, '.bash_profile')
-    try:
-        with open(dotfile, 'r') as f:
-            profile = f.read()
-    except IOError:
-        profile = ''
-    with open(dotfile, 'w+') as f:
-        print('source %s' % (minipkg_profile), file=f)
-        print('', file=f)
-        f.write(profile)
+    for dotfile in ['.bash_profile', '.bashrc']:
+        with open(os.path.join(dotfile), 'a+') as f:
+            print('', file=f)
+            print('. $HOME/.minipkg_profile', file=f)
 
     # Step 6:
     # Install binary packages.
