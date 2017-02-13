@@ -196,7 +196,6 @@ export COCCINELLE_HOME="$$HOME/pkg/lib/coccinelle"
 export PYTHONHOME="$$HOME/pkg"
 export PERL5LIB="$$HOME/pkg/lib/perl5:$PERL5LIB"
 export CURL_CA_BUNDLE="$$HOME/pkg/etc/ca-certificates.pem"
-export PKG_PATH="$$HOME/usr/pkgsrc/packages/All"
 """
 
 minipkg_profile_template_linux = """
