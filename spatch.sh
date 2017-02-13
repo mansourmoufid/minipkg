@@ -1,7 +1,7 @@
 #!/bin/sh
 LANG=C
 SED="/usr/bin/sed -i.orig"
-SPATCH="spatch --very-quiet --timeout 120 --in-place"
+SPATCH="spatch --very-quiet --timeout 120 --in-place --local-includes"
 find -L "${LOCALPATCHES}/${PKGPATH}" "${SPATCHES}" | \
     grep '\.\(sed\|cocci\)' | \
     awk -F/ '{print $0 " " $NF}' | sort -k2 | awk '{print $1}' | \
@@ -23,7 +23,7 @@ find -L "${LOCALPATCHES}/${PKGPATH}" "${SPATCHES}" | \
                 ${SED} -f "${sp}" "${f}"
             fi
             if [ "${ext}" == ".cocci" ]; then
-                ${SPATCH} --sp-file "${sp}" "${f}" >/dev/null
+                ${SPATCH} ${SPATCH_ARGS} --sp-file "${sp}" "${f}" >/dev/null
             fi
             diff -u "${f}.orig" "${f}" | tee -a "${spp}"
         done
