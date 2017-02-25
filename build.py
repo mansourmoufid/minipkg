@@ -101,7 +101,7 @@ if __name__ == '__main__':
     library_path = os.path.join(home, 'pkg', 'lib')
     if system == 'Darwin':
         os.environ.update({
-            'DYLD_LIBRARY_PATH': library_path,
+            'DYLD_FALLBACK_LIBRARY_PATH': library_path,
         })
     if system == 'Linux':
         os.environ.update({
