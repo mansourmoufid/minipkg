@@ -74,9 +74,12 @@ def fetch(url, path=None, hash=None):
         except:
             req = url_request(url)
             res = url_open(req)
-            dat = res.read()
-            with open(filename, 'w') as f:
-                f.write(dat)
+            with open(filename, 'a') as f:
+                while True:
+                    dat = res.read(1024)
+                    if len(dat) == 0:
+                        break
+                    f.write(dat)
     if hash:
         with open(filename, 'r') as f:
             dat = f.read()
