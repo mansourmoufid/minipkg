@@ -20,5 +20,11 @@ if __name__ == '__main__':
         if not os.path.isfile(path):
             continue
         st = os.stat(path)
-        mode = st.st_mode
-        os.chmod(path, mode | stat.S_IRUSR | stat.S_IWUSR)
+        mode = int('644', 8)
+        if st.st_mode & stat.S_IXUSR != 0:
+            mode = int('755', 8)
+        with open(path) as f:
+            x = f.read(2)
+            if x == '#!':
+                mode = int('755', 8)
+        os.chmod(path, mode)
