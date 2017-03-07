@@ -19,10 +19,10 @@ find -L "${LOCALPATCHES}/${PKGPATH}" "${SPATCHES}" | \
                 continue
             fi
             cp -f "${f}" "${f}.orig"
-            if [ "${ext}" == ".sed" ]; then
+            if [ "${ext}" = ".sed" ]; then
                 ${SED} -f "${sp}" "${f}"
             fi
-            if [ "${ext}" == ".cocci" ]; then
+            if [ "${ext}" = ".cocci" ]; then
                 ${SPATCH} ${SPATCH_ARGS} --sp-file "${sp}" "${f}" >/dev/null
             fi
             diff -u "${f}.orig" "${f}" | tee -a "${spp}"
