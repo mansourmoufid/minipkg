@@ -43,14 +43,14 @@ host = 'https://s3.amazonaws.com/minipkg.eliteraspberries.com'
 
 archives = [
     host + '/pkgsrc-2016Q4.tar.gz',
-    host + '/pkgsrc-eliteraspberries-1.8.tar.gz',
+    host + '/pkgsrc-eliteraspberries-1.9.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
     'a71b5f6f6091e9d9cd0505bcfc14e7b6a92d0cea0a86a8e9d72caf0f24ebcf1a',
-    '21e0cdb3461c05fa1f7ac06951772a7029795b7a247b71fe7bf674fc24b6a5af',
+    '89fcecfbbb5cf2f409fa4c0628f61b65dc3f72e7c29d161c8f2a623623c2a5e2',
 ]
 
 
@@ -99,6 +99,7 @@ def extract(tgz, path):
 all_packages = [
     'alt-ergo-1.01nb2.tgz',
     'autoconf-2.69nb7.tgz',
+    'automake-1.15nb4.tgz',
     'bzip2-1.0.6nb1.tgz',
     'ca-certificates-20161003.tgz',
     'camlp4-4.02.7.tgz',
@@ -108,8 +109,8 @@ all_packages = [
     'curl-7.52.1.tgz',
     'cython-0.25.2.tgz',
     'digest-20160304.tgz',
-    'fftw-3.3.6.tgz',
-    'frama-c-20151002nb2.tgz',
+    'fftw-3.3.6nb2.tgz',
+    'frama-c-20151002nb3.tgz',
     'gettext-lib-0.19.8.1.tgz',
     'gettext-tools-0.19.8.1.tgz',
     'gmake-4.1nb3.tgz',
@@ -120,11 +121,11 @@ all_packages = [
     'jpeg-9b.tgz',
     'libarchive-3.1.2.tgz',
     'libcxx-3.8.0nb3.tgz',
-    'libffi-3.2.1nb2.tgz',
-    'libpng-1.6.26.tgz',
+    'libffi-3.2.1nb3.tgz',
+    'libpng-1.6.28.tgz',
     'libtool-base-2.4.2nb13.tgz',
     'lzip-1.18.tgz',
-    'mbedtls-2.4.0.tgz',
+    'mbedtls-2.4.0nb2.tgz',
     'menhir-20151112nb4.tgz',
     'nbpatch-20151107.tgz',
     'ncurses-6.0nb3.tgz',
@@ -137,11 +138,12 @@ all_packages = [
     'pcre-ocaml-7.2.2nb3.tgz',
     'perl-5.24.0.tgz',
     'pkgconf-1.0.1.tgz',
-    'python-2.7.13.tgz',
+    'python-2.7.13nb2.tgz',
     'python-docopt-0.6.2.tgz',
     'python-numpy-1.11.0.tgz',
     'python-pillow-3.3.0nb3.tgz',
     'python-setuptools-28.8.0.tgz',
+    'python-wheel-0.29.0.tgz',
     'readline-6.3nb3.tgz',
     'scons-2.5.1.tgz',
     'sqlite3-3.15.2nb2.tgz',
