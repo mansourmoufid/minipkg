@@ -156,6 +156,8 @@ all_packages = [
 ]
 
 recommended_packages = [
+    'digest-*',
+    'nbpatch-*',
     'clang-*',
 ]
 
