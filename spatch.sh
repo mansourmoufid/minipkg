@@ -11,7 +11,7 @@ find -L "${LOCALPATCHES}/${PKGPATH}" "${SPATCHES}" | \
     fi
     ext=".${sp##*.}"
     spp="${WRKSRC}/$(basename ${sp}).patch"
-    for i in $(seq 1 20); do
+    for i in $(seq 1 100); do
         rm -f "${spp}"
         touch "${spp}"
         find "${WRKSRC}" | grep '\.\(c\|h\)$' | while read f; do
@@ -30,7 +30,7 @@ find -L "${LOCALPATCHES}/${PKGPATH}" "${SPATCHES}" | \
         if ! test -s "${spp}"; then
             break
         fi
-        sleep 60
+        sleep 10
     done
     rm -f "${spp}"
 done
