@@ -14,6 +14,7 @@ eliteraspberries/cython
 eliteraspberries/fftw
 eliteraspberries/frama-c
 eliteraspberries/libarchive
+eliteraspberries/portaudio
 eliteraspberries/python
 eliteraspberries/python-numpy
 eliteraspberries/python-pillow

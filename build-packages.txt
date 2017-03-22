@@ -45,6 +45,7 @@ eliteraspberries/zarith
 eliteraspberries/ocamlgraph
 eliteraspberries/alt-ergo
 eliteraspberries/frama-c
+eliteraspberries/portaudio
 eliteraspberries/python-numpy
 eliteraspberries/libpng
 eliteraspberries/jpeg

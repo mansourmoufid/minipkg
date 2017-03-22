@@ -138,6 +138,7 @@ all_packages = [
     'pcre-ocaml-7.2.2nb3.tgz',
     'perl-5.24.0.tgz',
     'pkgconf-1.0.1.tgz',
+    'portaudio-190600_20161030nb2.tgz',
     'python-2.7.13nb2.tgz',
     'python-docopt-0.6.2.tgz',
     'python-numpy-1.11.0.tgz',
