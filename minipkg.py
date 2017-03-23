@@ -43,14 +43,14 @@ host = 'https://s3.amazonaws.com/minipkg.eliteraspberries.com'
 
 archives = [
     host + '/pkgsrc-2016Q4.tar.gz',
-    host + '/pkgsrc-eliteraspberries-1.9.tar.gz',
+    host + '/pkgsrc-eliteraspberries-2.0.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
     'a71b5f6f6091e9d9cd0505bcfc14e7b6a92d0cea0a86a8e9d72caf0f24ebcf1a',
-    '89fcecfbbb5cf2f409fa4c0628f61b65dc3f72e7c29d161c8f2a623623c2a5e2',
+    'c899127dea611f59b866322c4abb99031455b615e7c59ecec3e96162e8bb1ee3',
 ]
 
 
