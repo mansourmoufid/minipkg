@@ -1,12 +1,10 @@
 language: c
-matrix:
-  include:
-    - os: linux
-      dist: trusty
-      sudo: false
-      compiler: clang
-    - os: osx
-      compiler: clang
+os:
+  - linux
+  - osx
+compiler:
+  - clang
+sudo: false
 script:
   - python minipkg.py
   - source ~/.minipkg_profile
