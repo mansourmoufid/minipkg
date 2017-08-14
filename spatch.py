@@ -40,6 +40,7 @@ def spatch_cmd(path):
         '--timeout', '120',
         '--in-place',
         '--local-includes',
+        '--disable-worth-trying-opt',
         '--sp-file', path,
     ]
 
