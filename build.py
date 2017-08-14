@@ -87,12 +87,12 @@ def pkg_info(pkgnames):
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     )
-    out, _ = p.communicate()
-    assert p.returncode == 0, 'pkg_info'
-    info = out.split('\n')
-    info = [s for s in info if 'REQUIRES=' not in s]
-    info = [s for s in info if 'PROVIDES=' not in s]
-    return info
+    for line in p.stdout.readlines():
+        if line.startswith('REQUIRES='):
+            continue
+        if line.startswith('PROVIDES='):
+            continue
+        yield line
 
 
 if __name__ == '__main__':
@@ -128,13 +128,14 @@ if __name__ == '__main__':
         pkg.split(' ')[1] if ' ' in pkg else pkg.split('/')[1]
         for pkg in pkgs
     ]
-    info = pkg_info(pkgnames)
     pkg_summary = os.path.join(localbase, 'packages', 'pkg_summary')
     try:
         os.remove(pkg_summary + '.gz')
     except OSError:
         pass
     with open(pkg_summary, 'w+') as f:
-        print('\n'.join(info), file=f)
+        info = pkg_info(pkgnames)
+        for line in info:
+            f.write(line)
     ret = subprocess.call(['gzip', pkg_summary])
     assert ret == 0, 'gzip %s' % (pkg_summary)

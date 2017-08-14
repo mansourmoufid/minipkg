@@ -286,6 +286,8 @@ if __name__ == '__main__':
     assert os.path.exists(sh), sh
     os.environ.update({'SH': sh})
     bootstrap_path = os.path.join(HOME, 'usr', 'pkgsrc', 'bootstrap')
+    mk_conf = os.path.join(cwd, 'mk.conf')
+    assert os.path.exists(mk_conf)
     if not os.path.exists(os.path.join(bootstrap_path, 'work')):
         os.chdir(bootstrap_path)
         p = subprocess.Popen(
@@ -296,7 +298,7 @@ if __name__ == '__main__':
                 '--compiler', CC,
                 '--make-jobs', '4',
                 '--prefer-pkgsrc', 'no',
-                '--mk-fragment', os.path.join(cwd, 'mk.conf'),
+                '--mk-fragment', mk_conf,
             ],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
