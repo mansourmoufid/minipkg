@@ -46,6 +46,7 @@ def spatch_cmd(path):
 
 
 def patch_file(sp, _f):
+    os.chmod(_f, int('644', 8))
     for i in range(100):
         subprocess.check_call(['cp', _f, _f + '.orig'])
         if ext(sp) == 'sed':
@@ -63,6 +64,7 @@ def patch_file(sp, _f):
             n += 1
         if n == 0:
             break
+    os.remove(_f + '.orig')
 
 
 if __name__ == '__main__':
