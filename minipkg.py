@@ -43,14 +43,14 @@ host = 'https://s3.amazonaws.com/minipkg.eliteraspberries.com'
 
 archives = [
     host + '/pkgsrc-2016Q2.tar.gz',
-    host + '/pkgsrc-eliteraspberries-2.0.tar.gz',
+    host + '/pkgsrc-eliteraspberries-2.1.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
     '7a5edba3ea6fb693b712cdc034d55a837164d282d6ba055d0c0dd57e5d056160',
-    'c899127dea611f59b866322c4abb99031455b615e7c59ecec3e96162e8bb1ee3',
+    '4d3ea1b84aacc895fea2d5e8df1bcd9f36cb57e2a0fb303db6a7c42e12cb3862',
 ]
 
 
@@ -139,7 +139,7 @@ all_packages = [
     'perl-5.24.0.tgz',
     'pkgconf-0.9.12.20151211nb2.tgz',
     'portaudio-190600_20161030nb2.tgz',
-    'python-2.7.13nb6.tgz',
+    'python-2.7.13nb7.tgz',
     'python-numpy-1.11.0nb4.tgz',
     'python-pillow-3.3.0nb3.tgz',
     'python-setuptools-28.8.0.tgz',
