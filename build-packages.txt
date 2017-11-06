@@ -46,6 +46,7 @@ eliteraspberries/ocamlgraph
 eliteraspberries/alt-ergo
 eliteraspberries/frama-c
 eliteraspberries/portaudio
+eliteraspberries/pyinstaller
 eliteraspberries/python-numpy
 eliteraspberries/libpng
 eliteraspberries/jpeg
