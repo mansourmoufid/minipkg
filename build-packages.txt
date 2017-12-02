@@ -53,4 +53,8 @@ eliteraspberries/jpeg
 eliteraspberries/python-pillow
 eliteraspberries/python-wheel
 eliteraspberries/scons
+eliteraspberries/freetype2
+eliteraspberries/fontconfig
+eliteraspberries/motif
+eliteraspberries/xpdf
 textproc/gsed

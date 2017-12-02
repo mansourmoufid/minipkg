@@ -22,4 +22,5 @@ eliteraspberries/python-pillow
 eliteraspberries/python-setuptools
 eliteraspberries/python-wheel
 eliteraspberries/scons
+eliteraspberries/xpdf
 textproc/gsed
