@@ -39,6 +39,7 @@ def spatch_cmd(path):
         '--very-quiet',
         '--timeout', '120',
         '--in-place',
+        '--include-headers',
         '--local-includes',
         '--disable-worth-trying-opt',
         '--sp-file', path,
