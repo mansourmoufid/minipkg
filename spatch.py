@@ -72,13 +72,20 @@ if __name__ == '__main__':
 
     os.environ.update(LANG='C')
 
+    spatch = os.environ.get('SPATCH', '')
     localpatches = os.environ.get('LOCALPATCHES')
     pkgpath = os.environ.get('PKGPATH')
     spatches = os.environ.get('SPATCHES')
     wrksrc = os.environ.get('WRKSRC')
 
+    if spatch == 'yes':
+        exts = ['sed', 'cocci']
+    elif spatch == 'no':
+        exts = []
+    else:
+        exts = spatch.split()
     patches = find([spatches, os.path.join(localpatches, pkgpath)])
-    patches = filter(lambda f: ext(f) in ('sed', 'cocci'), patches)
+    patches = filter(lambda f: ext(f) in exts, patches)
     patches.sort(key=os.path.basename)
     files = find([wrksrc])
     files = filter(lambda f: ext(f) in ('c', 'h'), files)
