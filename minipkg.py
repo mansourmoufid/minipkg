@@ -42,8 +42,8 @@ supported_mach = {
 host = 'https://s3.amazonaws.com/minipkg.eliteraspberries.com'
 
 archives = [
-    host + '/pkgsrc-2016Q2.tar.gz',
-    host + '/pkgsrc-eliteraspberries-2.1.tar.gz',
+    'pkgsrc-2016Q2.tar.gz',
+    'pkgsrc-eliteraspberries-2.1.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
@@ -51,6 +51,13 @@ hash_algorithm = hashlib.sha256
 archive_hashes = [
     '7a5edba3ea6fb693b712cdc034d55a837164d282d6ba055d0c0dd57e5d056160',
     '4d3ea1b84aacc895fea2d5e8df1bcd9f36cb57e2a0fb303db6a7c42e12cb3862',
+]
+
+patches = [
+    'patch-bootstrap',
+    'patch-compiler.mk',
+    'patch-bsd.prefs.mk',
+    'patch-bsd.sys.mk',
 ]
 
 
@@ -253,8 +260,11 @@ if __name__ == '__main__':
     # Step 2:
     # Fetch the pkgsrc archive.
     for (archive, hash) in zip(archives, archive_hashes):
-        print('minipkg: fetching', os.path.basename(archive), '...')
-        fetch(archive, hash=hash)
+        print('minipkg: fetching', archive, '...')
+        fetch('/'.join([host, archive]), hash=hash)
+    for patch in patches:
+        print('minipkg: fetching', patch, '...')
+        fetch('/'.join([host, patch]))
 
     # Step 3:
     # Extract the pkgsrc archive.
@@ -263,6 +273,13 @@ if __name__ == '__main__':
         print('minipkg: extracting', tgz, '...')
         extract(tgz, home_usr)
     localbase = os.path.join(HOME, 'usr', 'pkgsrc')
+    for patch in patches:
+        try:
+            subprocess.check_call(
+                ['patch', '-d', localbase, '-i', patch, '-p0']
+            )
+        except:
+            pass
     overwrite_pkgpaths = [
         'devel/cmake',
         'devel/gmp',
