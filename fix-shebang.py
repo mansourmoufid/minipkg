@@ -66,7 +66,7 @@ if __name__ == '__main__':
                 continue
             env = parse_shebang(shebang)
             print(path, env)
-            tmp, tmpname = tempfile.mkstemp()
+            tmp, tmpname = tempfile.mkstemp(dir=os.path.dirname(path))
             line = '#!' + ' '.join(env) + '\n'
             os.write(tmp, line)
             while True:
