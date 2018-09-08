@@ -39,7 +39,12 @@ supported_mach = {
     'x86_64': '64',
 }
 
-host = 'https://s3.amazonaws.com/minipkg.eliteraspberries.com'
+host = '/'.join([
+    'https://github.com/eliteraspberries/pkgsrc-eliteraspberries',
+    'releases',
+    'download',
+    'v2.2',
+])
 
 archives = [
     'pkgsrc-2018Q2.tar.gz',
