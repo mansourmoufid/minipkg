@@ -26,7 +26,7 @@ except ImportError:
 
 
 __author__ = 'Mansour Moufid'
-__copyright__ = 'Copyright 2015-2017, Mansour Moufid'
+__copyright__ = 'Copyright 2015-2018, Mansour Moufid'
 __email__ = 'mansourmoufid@gmail.com'
 __license__ = 'ISC'
 __status__ = 'Development'
@@ -42,14 +42,14 @@ supported_mach = {
 host = 'https://s3.amazonaws.com/minipkg.eliteraspberries.com'
 
 archives = [
-    'pkgsrc-2016Q2.tar.gz',
+    'pkgsrc-2018Q2.tar.gz',
     'pkgsrc-eliteraspberries-2.1.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
-    '7a5edba3ea6fb693b712cdc034d55a837164d282d6ba055d0c0dd57e5d056160',
+    '4e668017735f916d637687af10e5c0242d682f5dd5e71c03ffe26eed047c08ae',
     '4d3ea1b84aacc895fea2d5e8df1bcd9f36cb57e2a0fb303db6a7c42e12cb3862',
 ]
 
