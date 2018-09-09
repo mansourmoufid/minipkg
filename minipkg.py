@@ -200,9 +200,6 @@ if __name__ == '__main__':
     for (archive, hash) in zip(archives, archive_hashes):
         print('minipkg: fetching', archive, '...')
         fetch('/'.join([host, archive]), hash=hash)
-    for patch in patches:
-        print('minipkg: fetching', patch, '...')
-        fetch('/'.join([host, patch]))
 
     # Step 3:
     # Extract the pkgsrc archive.
@@ -212,12 +209,13 @@ if __name__ == '__main__':
         extract(tgz, home_usr)
     localbase = os.path.join(HOME, 'usr', 'pkgsrc')
     for patch in patches:
+        fetch('/'.join([host, patch]), path=os.path.join(localbase, patch))
         try:
             subprocess.check_call([
                 'patch',
                 '-d', localbase,
                 '-f',
-                '-i', os.path.join(HOME, patch),
+                '-i', os.path.join(localbase, patch),
                 '-p0',
             ])
         except:
