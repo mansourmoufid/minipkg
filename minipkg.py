@@ -82,7 +82,7 @@ def fetch(url, path=None, hash=None):
     subprocess.check_call(['mkdir', '-p', os.path.dirname(filename)])
     if not os.path.exists(filename):
         try:
-            subprocess.check_call(['curl', '-s', '-o', filename, url])
+            subprocess.check_call(['curl', '-s', '-L', '-o', filename, url])
         except:
             req = url_request(url)
             res = url_open(req)
