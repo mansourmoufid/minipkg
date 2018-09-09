@@ -3,6 +3,7 @@ os:
   - linux
   - osx
 compiler:
+  - gcc
   - clang
 sudo: false
 script:
