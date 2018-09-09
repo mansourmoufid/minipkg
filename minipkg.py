@@ -62,7 +62,6 @@ patches = [
     'patch-bootstrap',
     'patch-compiler.mk',
     'patch-bsd.prefs.mk',
-    'patch-bsd.sys.mk',
 ]
 
 
@@ -217,6 +216,7 @@ if __name__ == '__main__':
             subprocess.check_call([
                 'patch',
                 '-d', localbase,
+                '-f',
                 '-i', os.path.join(HOME, patch),
                 '-p0',
             ])
