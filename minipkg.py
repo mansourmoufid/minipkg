@@ -214,9 +214,12 @@ if __name__ == '__main__':
     localbase = os.path.join(HOME, 'usr', 'pkgsrc')
     for patch in patches:
         try:
-            subprocess.check_call(
-                ['patch', '-d', localbase, '-i', patch, '-p0']
-            )
+            subprocess.check_call([
+                'patch',
+                '-d', localbase,
+                '-i', os.path.join(HOME, patch),
+                '-p0',
+            ])
         except:
             pass
     overwrite_pkgpaths = [
