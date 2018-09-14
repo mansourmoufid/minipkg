@@ -289,7 +289,6 @@ if __name__ == '__main__':
             minipkg_profile_template = minipkg_profile_templates[sys]
             template = string.Template(minipkg_profile_template)
             profile = template.safe_substitute({
-                'home': HOME,
                 'sdkroot': sdkroot,
                 'sh': sh,
             })
