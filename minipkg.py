@@ -158,7 +158,7 @@ minipkg_profile_templates['Linux'] = """
 """
 
 minipkg_profile_templates['Darwin'] = """
-export MACOSX_DEPLOYMENT_TARGET="10.7"
+export MACOSX_DEPLOYMENT_TARGET="10.9"
 export SDKROOT="$sdkroot"
 """
 
