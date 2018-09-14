@@ -151,6 +151,7 @@ export PYTHONPATH="$$HOME/pkg/lib/coccinelle/python:$$PYTHONPATH"
 export PERL5LIB="$$HOME/pkg/lib/perl5:$PERL5LIB"
 export CURL_CA_BUNDLE="$$HOME/pkg/etc/ca-certificates.pem"
 export PKG_CONFIG_PATH="$$HOME/pkg/lib/pkgconfig:$$PKG_CONFIG_PATH"
+export PYSDL2_DLL_PATH="$$HOME/pkg/lib"
 """
 
 minipkg_profile_templates['Linux'] = """
