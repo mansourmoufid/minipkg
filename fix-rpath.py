@@ -10,12 +10,16 @@ Usage:
 
 from __future__ import print_function
 
+import functools
 import os
 import platform
 import re
 import stat
 import subprocess
 import sys
+
+
+Popen = functools.partial(subprocess.Popen, universal_newlines=True)
 
 
 __author__ = 'Mansour Moufid'
@@ -26,7 +30,7 @@ __status__ = 'Development'
 
 
 def isexe(exe_pat, path):
-    p = subprocess.Popen(
+    p = Popen(
         ['file', path],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -46,7 +50,7 @@ def islib(path):
 
 
 def install_names(bin):
-    p = subprocess.Popen(
+    p = Popen(
         ['otool', '-L', bin],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -113,7 +117,7 @@ def fix_rpath_exe(prefix, exe):
 
 
 def add_rpath(bin, path):
-    p = subprocess.Popen(
+    p = Popen(
         ['install_name_tool', '-delete_rpath', path, bin],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,

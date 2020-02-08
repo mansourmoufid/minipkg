@@ -20,6 +20,7 @@ def depends(home, pkgpath):
         ['bmake', 'show-depends-pkgpaths'],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
+        universal_newlines=True,
     )
     out, err = p.communicate()
     assert p.returncode == 0, 'bmake show-depends-pkgpaths'

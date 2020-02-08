@@ -2,10 +2,14 @@
 
 from __future__ import print_function
 
+import functools
 import os
 import platform
 import subprocess
 import sys
+
+
+Popen = functools.partial(subprocess.Popen, universal_newlines=True)
 
 
 __author__ = 'Mansour Moufid'
@@ -21,7 +25,7 @@ system = platform.system()
 
 def bmake(pkgpath, target):
     os.chdir(pkgpath)
-    p = subprocess.Popen(
+    p = Popen(
         ['bmake', target],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -43,7 +47,7 @@ def find(dir, type=None, name=None):
         type = 'f'
     if name is None:
         name = '*'
-    p = subprocess.Popen(
+    p = Popen(
         ['find', dir, '-type', type, '-name', name],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -57,7 +61,7 @@ def find(dir, type=None, name=None):
 
 def wrksrc(pkgpath):
     os.chdir(pkgpath)
-    p = subprocess.Popen(
+    p = Popen(
         ['bmake', 'show-var', 'VARNAME=WRKSRC'],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -82,7 +86,7 @@ def build(pkgpath):
 
 
 def pkg_info(pkgnames):
-    p = subprocess.Popen(
+    p = Popen(
         ['pkg_info', '-X'] + pkgnames,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,

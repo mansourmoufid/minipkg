@@ -262,6 +262,7 @@ if __name__ == '__main__':
             ],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
+            universal_newlines=True,
         )
         out, err = p.communicate()
         log = os.path.join(HOME, 'pkgsrc-bootstrap-log.txt')

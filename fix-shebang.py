@@ -12,12 +12,12 @@ import tempfile
 
 
 def read_shebang(f):
-    interp = ''
+    interp = b''
     x = f.read(2)
-    if x == '#!':
+    if x == b'#!':
         for i in range(1024):
             c = f.read(1)
-            if c == '' or c == '\n':
+            if c == b'' or c == b'\n':
                 break
             interp += c
     return interp
@@ -60,18 +60,18 @@ if __name__ == '__main__':
         if st.st_size < len('#!.\n'):
             continue
 
-        with open(path, 'r') as f:
+        with open(path, 'rb') as f:
             shebang = read_shebang(f)
-            if shebang == '':
+            if len(shebang) == 0:
                 continue
-            env = parse_shebang(shebang)
+            env = parse_shebang(shebang.decode('ascii'))
             print(path, env)
             tmp, tmpname = tempfile.mkstemp(dir=os.path.dirname(path))
             line = '#!' + ' '.join(env) + '\n'
-            os.write(tmp, line)
+            os.write(tmp, line.encode('ascii'))
             while True:
                 x = f.read(4096)
-                if x == '':
+                if x == b'':
                     break
                 os.write(tmp, x)
             os.close(tmp)

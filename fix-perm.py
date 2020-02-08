@@ -6,6 +6,7 @@
 
 from __future__ import print_function
 
+import io
 import os
 import stat
 import sys
@@ -23,8 +24,8 @@ if __name__ == '__main__':
         mode = int('644', 8)
         if st.st_mode & stat.S_IXUSR != 0:
             mode = int('755', 8)
-        with open(path) as f:
+        with io.open(path, 'rb') as f:
             x = f.read(2)
-            if x == '#!':
+            if x == b'#!':
                 mode = int('755', 8)
         os.chmod(path, mode)
