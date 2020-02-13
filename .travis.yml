@@ -8,8 +8,8 @@ compiler:
 sudo: false
 script:
   - python minipkg.py
-  - source ~/.minipkg_profile
 after_success:
+  - source ~/.minipkg_profile
   - pkg_info
 after_failure:
-  - cat pkgsrc-bootstrap-log.txt
+  - cat ~/pkgsrc-bootstrap-log.txt
