@@ -113,7 +113,7 @@ recommended_packages = [
 ]
 
 
-cwd = os.path.split(os.path.abspath(__file__))[0]
+cwd = os.path.dirname(os.path.abspath(__file__))
 
 
 def osx_version():
@@ -211,19 +211,18 @@ if __name__ == '__main__':
 
     # Step 3:
     # Extract the pkgsrc archive.
-    home_usr = os.path.join(HOME, 'usr')
     for tgz in map(os.path.basename, archives):
         print('minipkg: extracting', tgz, '...')
-        extract(tgz, home_usr)
-    localbase = os.path.join(HOME, 'usr', 'pkgsrc')
+        extract(tgz, os.path.join(HOME, 'usr'))
+    usrpkgsrc = os.path.join(HOME, 'usr', 'pkgsrc')
     for patch in patches:
-        fetch('/'.join([host, patch]), path=os.path.join(localbase, patch))
+        fetch('/'.join([host, patch]), path=os.path.join(usrpkgsrc, patch))
         try:
             subprocess.check_call([
                 'patch',
-                '-d', localbase,
+                '-d', usrpkgsrc,
                 '-f',
-                '-i', os.path.join(localbase, patch),
+                '-i', os.path.join(usrpkgsrc, patch),
                 '-p0',
             ])
         except:
@@ -237,8 +236,8 @@ if __name__ == '__main__':
     ]
     for pkgpath in overwrite_pkgpaths:
         cat, pkg = pkgpath.split('/')
-        os.chdir(localbase)
-        subprocess.check_call(['rm', '-rf', pkgpath])
+        os.chdir(os.path.join(usrpkgsrc, cat))
+        subprocess.check_call(['rm', '-rf', pkg])
         subprocess.check_call([
             'ln', '-s',
             os.path.join(localbase, 'eliteraspberries', pkg),

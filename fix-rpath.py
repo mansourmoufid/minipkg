@@ -38,8 +38,8 @@ def isexe(exe_pat, path):
     out, _ = p.communicate()
     if not p.returncode == 0:
         return False
-    type = out.split(': ')[1]
-    return exe_pat.match(type) is not None
+    x = out.split(': ')[1]
+    return exe_pat.match(x) is not None
 
 
 def islib(path):
