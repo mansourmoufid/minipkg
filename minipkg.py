@@ -239,9 +239,9 @@ if __name__ == '__main__':
         os.chdir(os.path.join(usrpkgsrc, cat))
         subprocess.check_call(['rm', '-rf', pkg])
         subprocess.check_call([
-            'ln', '-s',
-            os.path.join(localbase, 'eliteraspberries', pkg),
-            os.path.join(localbase, cat, pkg),
+            'ln', '-F', '-s',
+            os.path.join('..', 'eliteraspberries', pkg),
+            os.path.join(pkg),
         ])
 
     # Step 4:
