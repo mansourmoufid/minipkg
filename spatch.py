@@ -1,102 +1,149 @@
 #!/usr/bin/env python
 
+'''spatch.py - apply semantic patches recursively
+
+Usage:
+    spatch.py <x.cocci> ... (<dir> | <file>) ...
+    spatch.py -h | --help
+'''
 
 from __future__ import print_function
 
 import functools
-import multiprocessing
+import io
 import os
-import signal
 import subprocess
 import sys
 
 
 Popen = functools.partial(subprocess.Popen, universal_newlines=True)
 
-Popen_stdout = functools.partial(Popen, stdout=subprocess.PIPE)
+encoding = sys.stdin.encoding
 
 
-def find(dirs):
-    p = Popen_stdout(['find', '-L'] + dirs)
-    for line in p.stdout.readlines():
-        path = line.rstrip('\n')
-        if not os.path.isfile(path):
-            continue
-        yield path
+def copy(src, dst):
+    with io.open(src, 'rt', encoding=encoding, errors='replace') as x:
+        with io.open(dst, 'wt', encoding=encoding) as y:
+            for line in x:
+                y.write(line)
 
 
-def ext(path):
-    return path.split('.')[-1]
+def ext(x):
+    filename = os.path.basename(x)
+    return filename.split('.')[-1]
 
 
-def sed_cmd(path):
-    return ['sed', '-f', path]
+def find(dir):
+    for dirpath, dirnames, filenames in os.walk(dir):
+        for filename in filenames:
+            yield os.path.join(dirpath, filename)
+        for dirname in dirnames:
+            path = os.path.join(dirpath, dirname)
+            yield path
+            find(path)
 
 
-def spatch_cmd(path):
-    return [
+def sed(sp, filename):
+    copy(filename, filename + '.orig')
+    p = Popen(
+        ['sed', '-f', sp, filename + '.orig'],
+        stdout=subprocess.PIPE,
+    )
+    with open(filename, 'wt') as f:
+        for line in p.stdout:
+            f.write(line)
+
+
+def cocci(sp, filename):
+    copy(filename, filename + '.orig')
+    cmd = [
         'spatch',
-        '--very-quiet',
-        '--timeout', '120',
+        '--disable-worth-trying-opt',
         '--in-place',
         '--include-headers',
         '--local-includes',
-        '--disable-worth-trying-opt',
-        '--sp-file', path,
+        '--sp-file', sp,
+        '--timeout', '120',
+        '--very-quiet',
+        filename
     ]
+    p = Popen(cmd, stdout=subprocess.PIPE)
+    _, _ = p.communicate()
 
 
-def patch_file(sp, _f):
-    os.chmod(_f, int('644', 8))
+def spatch(sp, filename):
+    if not os.path.isfile(filename):
+        return
+    try:
+        tty = open(os.ctermid(), 'w')
+    except:
+        tty = os.devnull
+    w = 80 - 2
+    os.chmod(filename, int('644', 8))
     for i in range(100):
-        subprocess.check_call(['cp', _f, _f + '.orig'])
+        status = u'{}: {} {}'.format(
+            os.path.basename(__file__),
+            os.path.basename(sp),
+            filename
+        )
+        tty.write(status[:w].ljust(w))
+        tty.flush()
         if ext(sp) == 'sed':
-            p = Popen_stdout(sed_cmd(sp) + [_f + '.orig'])
-            with open(_f, 'w') as f:
-                for line in p.stdout.readlines():
-                    f.write(line)
+            sed(sp, filename)
         if ext(sp) == 'cocci':
-            p = Popen_stdout(spatch_cmd(sp) + [_f])
-            _, _ = p.communicate()
-        p = Popen_stdout(['diff', '-u', _f + '.orig', _f])
+            cocci(sp, filename)
+        tty.write(u'\r')
+        tty.flush()
+        p = Popen(
+            ['diff', '-u', filename + '.orig', filename],
+            stdout=subprocess.PIPE,
+        )
         n = 0
-        for line in p.stdout.readlines():
+        for line in p.stdout:
             sys.stdout.write(line)
-            n += 1
+            n = n + 1
         if n == 0:
             break
-    os.remove(_f + '.orig')
+    os.remove(filename + '.orig')
+    tty.write(u'\r' + w * ' ' + '\r')
+    tty.close()
 
 
 if __name__ == '__main__':
 
     os.environ.update(LANG='C')
 
-    spatch = os.environ.get('SPATCH', '')
-    localpatches = os.environ.get('LOCALPATCHES')
-    pkgpath = os.environ.get('PKGPATH')
-    spatches = os.environ.get('SPATCHES')
-    wrksrc = os.environ.get('WRKSRC')
+    if len(sys.argv) == 2 and sys.argv[1] in ('-h', '--help'):
+        sys.stdout.write(__doc__)
+        sys.exit(os.EX_OK)
+    if len(sys.argv) < 2:
+        sys.stdout.write(__doc__)
+        sys.exit(os.EX_USAGE)
 
-    if spatch == 'yes':
-        exts = ['sed', 'cocci']
-    elif spatch == 'no':
-        exts = []
+    SPATCH = os.environ.get('SPATCH', '')
+    if SPATCH == 'no':
+        sys.exit(os.EX_OK)
+
+    exts = []
+    if SPATCH == 'all':
+        exts += ['sed', 'cocci']
     else:
-        exts = spatch.split()
-    patches = find([spatches, os.path.join(localpatches, pkgpath)])
-    patches = filter(lambda f: ext(f) in exts, patches)
-    patches.sort(key=os.path.basename)
-    files = find([wrksrc])
-    files = filter(lambda f: ext(f) in ('c', 'h'), files)
+        exts += SPATCH.split(' ')
+    def ispatch(x):
+        return os.path.isfile(x) and ext(x) in exts
 
-    signal.signal(signal.SIGINT, signal.SIG_IGN)
-    pool = multiprocessing.Pool(4)
-    signal.signal(signal.SIGINT, signal.SIG_DFL)
+    def iscode(x):
+        return os.path.isfile(x) and ext(x) in ('c', 'h')
+
+    args = sys.argv[1:]
+    patches = map(os.path.abspath, filter(ispatch, args))
+    paths = map(os.path.abspath, filter(lambda x: not ispatch(x), args))
 
     for sp in patches:
-        pf = functools.partial(patch_file, sp)
-        try:
-            pool.map(pf, files)
-        except KeyboardInterrupt:
-            pool.terminate()
+        for path in paths:
+            if os.path.isdir(path):
+                os.chdir(path)
+                for filename in filter(iscode, find(path)):
+                    spatch(sp, filename.lstrip(path))
+            else:
+                spatch(sp, path)
