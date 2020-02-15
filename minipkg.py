@@ -41,19 +41,19 @@ host = '/'.join([
     'https://github.com/eliteraspberries/pkgsrc-eliteraspberries',
     'releases',
     'download',
-    'v2.2',
+    'v2.3',
 ])
 
 archives = [
     'pkgsrc-2019Q4.tar.gz',
-    'pkgsrc-eliteraspberries-2.2.tar.gz',
+    'pkgsrc-eliteraspberries-2.3.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
     'b7cbca4a0b338812f231db306cd82647cdbf890394f9b77be4f38ac26e2e2a6d',
-    '7c6bd1cffc7f8bb0833a35de072e58d4dc3f4e7af61b7d8f1eaf53b75d8c47f7',
+    '2ac9a389be45fdeb79e918cc4d626d95314664824b377fa3c7b394ed224708ad',
 ]
 
 patches = [
