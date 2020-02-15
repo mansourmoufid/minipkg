@@ -303,4 +303,22 @@ if __name__ == '__main__':
             print('', file=f)
             print('. $HOME/.minipkg_profile', file=f)
 
+    # Step 6:
+    # Copy scripts to PATH.
+    print('minipkg: copying scripts ...')
+    scripts = [
+        'fix-perm.py',
+        'fix-rpath.py',
+        'fix-shebang.py',
+        'spatch.py',
+    ]
+    localbase = os.path.join(HOME, 'pkg')
+    for script in scripts:
+        path = os.path.join(localbase, 'sbin', script)
+        with open(os.path.join(cwd, script), 'rt') as x:
+            with open(path, 'wt') as y:
+                for line in x:
+                    y.write(line)
+        os.chmod(path, int('755', 8))
+
     print('minipkg: done!')
