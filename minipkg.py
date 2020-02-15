@@ -16,13 +16,11 @@ import string
 import subprocess
 import sys
 try:
-    from urllib2 import (
-        Request as url_request,
-        urlopen as url_open,
-    )
+    from urllib2 import Request
+    from urllib2 import urlopen
 except ImportError:
-    import urllib.request.Request as url_request
-    import urllib.request.urlopen as url_open
+    from urllib.request import Request
+    from urllib.request import urlopen
 
 
 __author__ = 'Mansour Moufid'
@@ -83,16 +81,16 @@ def fetch(url, path=None, hash=None):
         try:
             subprocess.check_call(['curl', '-s', '-L', '-o', filename, url])
         except:
-            req = url_request(url)
-            res = url_open(req)
-            with open(filename, 'a') as f:
+            req = Request(url)
+            res = urlopen(req)
+            with open(filename, 'ab') as f:
                 while True:
                     dat = res.read(1024)
                     if len(dat) == 0:
                         break
                     f.write(dat)
     if hash:
-        with open(filename, 'r') as f:
+        with open(filename, 'rb') as f:
             dat = f.read()
         h = hash_algorithm(dat)
         assert h.hexdigest() == hash
