@@ -153,10 +153,12 @@ export PYSDL2_DLL_PATH="$$HOME/pkg/lib"
 export CC="clang"
 export CXX="clang++"
 export CPPFLAGS="-isystem $${HOME}/pkg/include $${CPPFLAGS}"
-export CPPFLAGS="-cxx-isystem $${HOME}/pkg/include/c++/v1 $${CPPFLAGS}"
-export CXXFLAGS="-std=c++11 -stdlib=libc++ -nostdinc++ $${CXXFLAGS}"
-export LDFLAGS="-lc++ -lc++abi $${LDFLAGS}"
 export LDFLAGS="-Wl,-L$${HOME}/pkg/lib $${LDFLAGS}"
+if test -e ${HOME}/pkg/bin/clang++; then
+    export CPPFLAGS="-cxx-isystem $${HOME}/pkg/include/c++/v1 $${CPPFLAGS}"
+    export CXXFLAGS="-std=c++11 -stdlib=libc++ -nostdinc++ $${CXXFLAGS}"
+    export LDFLAGS="-lc++ -lc++abi $${LDFLAGS}"
+fi
 """
 
 minipkg_profile_templates['Linux'] = """
