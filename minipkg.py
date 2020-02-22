@@ -24,7 +24,7 @@ except ImportError:
 
 
 __author__ = 'Mansour Moufid'
-__copyright__ = 'Copyright 2015-2020, Mansour Moufid'
+__copyright__ = 'Copyright 2015-2018, Mansour Moufid'
 __email__ = 'mansourmoufid@gmail.com'
 __license__ = 'ISC'
 __status__ = 'Development'
@@ -45,14 +45,14 @@ host = '/'.join([
 ])
 
 archives = [
-    'pkgsrc-2019Q4.tar.gz',
+    'pkgsrc-2018Q2.tar.gz',
     'pkgsrc-eliteraspberries-2.3.tar.gz',
 ]
 
 hash_algorithm = hashlib.sha256
 
 archive_hashes = [
-    'b7cbca4a0b338812f231db306cd82647cdbf890394f9b77be4f38ac26e2e2a6d',
+    '4e668017735f916d637687af10e5c0242d682f5dd5e71c03ffe26eed047c08ae',
     '2ac9a389be45fdeb79e918cc4d626d95314664824b377fa3c7b394ed224708ad',
 ]
 
