@@ -154,6 +154,7 @@ export CC="clang"
 export CXX="clang++"
 export CPPFLAGS="-isystem $${HOME}/pkg/include $${CPPFLAGS}"
 export LDFLAGS="-Wl,-L$${HOME}/pkg/lib $${LDFLAGS}"
+export LDFLAGS="-Wl,-rpath,$${HOME}/pkg $${LDFLAGS}"
 if test -e ${HOME}/pkg/bin/clang++; then
     export CPPFLAGS="-cxx-isystem $${HOME}/pkg/include/c++/v1 $${CPPFLAGS}"
     export CXXFLAGS="-std=c++11 -stdlib=libc++ -nostdinc++ $${CXXFLAGS}"
