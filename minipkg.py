@@ -10,6 +10,7 @@ Usage:
 
 from __future__ import print_function
 
+import glob
 import hashlib
 import os
 import string
@@ -44,22 +45,22 @@ host = '/'.join([
     'v2.4',
 ])
 
-archives = [
+files = [
     'pkgsrc-2018Q2.tar.gz',
     'pkgsrc-eliteraspberries-2.4.tar.gz',
+    'patch-bootstrap',
+    'patch-bsd.prefs.mk',
+    'patch-compiler.mk',
 ]
 
 hash_algorithm = hashlib.sha256
 
-archive_hashes = [
+hashes = [
     '4e668017735f916d637687af10e5c0242d682f5dd5e71c03ffe26eed047c08ae',
     'a52bdecb3795758ed653a39e0d47ac6db432fe4af73f1c29b9c4aaae626a28de',
-]
-
-patches = [
-    'patch-bootstrap',
-    'patch-compiler.mk',
-    'patch-bsd.prefs.mk',
+    '4dbcbba6e3318805ffc3998716a857e0c37ceb1b9d593bd258ad15113ed91435',
+    'a9709381238a29e3be551653b78d1db4f2bdc39d2fd1ac48f232c71bbf393738',
+    '873e67f7db373a290b754611e9e050cba2324b3150c64f08d1e52a2d8789aa04',
 ]
 
 
@@ -206,17 +207,17 @@ if __name__ == '__main__':
 
     # Step 2:
     # Fetch the pkgsrc archive.
-    for (archive, hash) in zip(archives, archive_hashes):
-        print('minipkg: fetching', archive, '...')
-        fetch('/'.join([host, archive]), hash=hash)
+    for (f, h) in zip(files, hashes):
+        print('minipkg: fetching', f, '...')
+        fetch('/'.join([host, f]), hash=h)
 
     # Step 3:
     # Extract the pkgsrc archive.
-    for tgz in map(os.path.basename, archives):
+    for tgz in map(os.path.basename, files[0:2]):
         print('minipkg: extracting', tgz, '...')
         extract(tgz, os.path.join(HOME, 'usr'))
     usrpkgsrc = os.path.join(HOME, 'usr', 'pkgsrc')
-    for patch in patches:
+    for patch in glob.glob('patch-*'):
         fetch('/'.join([host, patch]), path=os.path.join(usrpkgsrc, patch))
         try:
             subprocess.check_call([
