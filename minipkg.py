@@ -42,6 +42,7 @@ subprocess.check_output = functools.partial(
 supported_sys = ('Linux', 'Darwin')
 
 supported_mach = {
+    'arm64': '64',
     'x86_64': '64',
 }
 
