@@ -11,7 +11,6 @@ Usage:
 from __future__ import print_function
 
 import functools
-import glob
 import hashlib
 import os
 import re
@@ -229,8 +228,11 @@ if __name__ == '__main__':
         print('minipkg: extracting', tgz, '...')
         extract(tgz, os.path.join(HOME, 'usr'))
     usrpkgsrc = os.path.join(HOME, 'usr', 'pkgsrc')
-    for patch in glob.glob('patch-*'):
-        fetch('/'.join([host, patch]), path=os.path.join(usrpkgsrc, patch))
+    patches = [x for x in files if x.startswith('patch-')]
+    for patch in patches:
+        subprocess.check_call(
+            ['cp', '-f', patch, os.path.join(usrpkgsrc, patch)]
+        )
         try:
             subprocess.check_call([
                 'patch',
