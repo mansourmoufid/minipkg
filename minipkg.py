@@ -14,6 +14,7 @@ import functools
 import glob
 import hashlib
 import os
+import re
 import string
 import subprocess
 import sys
@@ -128,9 +129,17 @@ def osx_version():
     return osx_version
 
 
-def sdkroot(version):
-    x, y = version[:2]
-    sdk = 'macosx' + x + '.' + y
+def getsdks():
+    out = subprocess.check_output(['xcodebuild', '-showsdks'])
+    sdks = []
+    for line in out.split('\n'):
+        match = re.match(r'.*\t-sdk (.*)', line)
+        if match is not None:
+            sdks += match.groups()
+    return [x for x in sdks if re.match(r'macosx[0-9]*[.][0-9]*', x)]
+
+
+def sdkroot(sdk):
     xcrun_out = subprocess.check_output(
         ['xcrun', '--sdk', sdk, '--show-sdk-path'],
     )
@@ -289,8 +298,7 @@ if __name__ == '__main__':
     # Set environment variables.
     print('minipkg: setting environment variables ...')
     if OPSYS == 'Darwin':
-        x, y = osx_version()[:2]
-        sdkroot = sdkroot((x, y))
+        sdkroot = sdkroot(getsdks()[-1])
     else:
         sdkroot = ''
     minipkg_profile = os.path.join(HOME, '.minipkg_profile')
