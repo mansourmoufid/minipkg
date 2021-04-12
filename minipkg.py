@@ -267,6 +267,8 @@ if __name__ == '__main__':
     sh = sh.split(os.pathsep)[0]
     assert os.path.exists(sh), sh
     os.environ.update({'SH': sh})
+    if OPSYS == 'Darwin':
+        os.environ.update({'OSX_TOLERATE_SDK_SKEW': 'yes'})
     bootstrap_path = os.path.join(HOME, 'usr', 'pkgsrc', 'bootstrap')
     mk_conf = os.path.join(cwd, 'mk.conf')
     assert os.path.exists(mk_conf)
