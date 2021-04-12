@@ -53,7 +53,7 @@ host = '/'.join([
 ])
 
 files = [
-    'pkgsrc-2019Q1.tar.gz',
+    'pkgsrc-2020Q4.tar.gz',
     'pkgsrc-eliteraspberries-2.5.tar.gz',
     'patch-bootstrap',
     'patch-bsd.prefs.mk',
@@ -63,7 +63,7 @@ files = [
 hash_algorithm = hashlib.sha256
 
 hashes = [
-    '65c17858b75f8403d6b1861bfec381dfcd28cc8974cb8152a4ef55a4ae2194d0',
+    '3087a84e36663168d343158530035ee90356b81cc7b3f197950c816558e3c993',
     '32cbd9b4dda906943f9e4d82a7bf8f76474177aac0298b9ec2be815bd9b79c43',
     '4dbcbba6e3318805ffc3998716a857e0c37ceb1b9d593bd258ad15113ed91435',
     'a9709381238a29e3be551653b78d1db4f2bdc39d2fd1ac48f232c71bbf393738',
