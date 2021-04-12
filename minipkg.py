@@ -10,6 +10,7 @@ Usage:
 
 from __future__ import print_function
 
+import functools
 import glob
 import hashlib
 import os
@@ -31,6 +32,11 @@ __license__ = 'ISC'
 __status__ = 'Development'
 __version__ = '2.5'
 
+
+subprocess.check_output = functools.partial(
+    subprocess.check_output,
+    universal_newlines=True,
+)
 
 supported_sys = ('Linux', 'Darwin')
 
@@ -65,12 +71,12 @@ hashes = [
 
 
 def which(name):
-    out = subprocess.check_output(['which', name], universal_newlines=True)
+    out = subprocess.check_output(['which', name])
     return out.rstrip('\n')
 
 
 def uname():
-    out = subprocess.check_output(['uname', '-sm'], universal_newlines=True)
+    out = subprocess.check_output(['uname', '-sm'])
     (sys, mach) = out.split()
     return (sys, mach)
 
@@ -116,10 +122,7 @@ cwd = os.path.dirname(os.path.abspath(__file__))
 
 
 def osx_version():
-    sw_vers_out = subprocess.check_output(
-        ['sw_vers', '-productVersion'],
-        universal_newlines=True,
-    )
+    sw_vers_out = subprocess.check_output(['sw_vers', '-productVersion'])
     product_version = sw_vers_out.rstrip('\n')
     osx_version = product_version.split('.')
     return osx_version
@@ -130,7 +133,6 @@ def sdkroot(version):
     sdk = 'macosx' + x + '.' + y
     xcrun_out = subprocess.check_output(
         ['xcrun', '--sdk', sdk, '--show-sdk-path'],
-        universal_newlines=True,
     )
     sdkroot = xcrun_out.rstrip('\n')
     return sdkroot
