@@ -58,6 +58,7 @@ files = [
     'patch-bootstrap',
     'patch-bsd.prefs.mk',
     'patch-compiler.mk',
+    'patch-zlib',
 ]
 
 hash_algorithm = hashlib.sha256
@@ -68,6 +69,7 @@ hashes = [
     '4dbcbba6e3318805ffc3998716a857e0c37ceb1b9d593bd258ad15113ed91435',
     'a9709381238a29e3be551653b78d1db4f2bdc39d2fd1ac48f232c71bbf393738',
     '873e67f7db373a290b754611e9e050cba2324b3150c64f08d1e52a2d8789aa04',
+    'ac36dedb99ab36500991bdf358359fcaf1065121d19e1f14ab2ab07c857f0e23',
 ]
 
 
