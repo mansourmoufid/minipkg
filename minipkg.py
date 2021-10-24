@@ -173,8 +173,7 @@ export LDFLAGS="-Wl,-L$${HOME}/pkg/lib $${LDFLAGS}"
 export LDFLAGS="-Wl,-rpath,$${HOME}/pkg $${LDFLAGS}"
 if test -e ${HOME}/pkg/bin/clang++; then
     export CPPFLAGS="-cxx-isystem $${HOME}/pkg/include/c++/v1 $${CPPFLAGS}"
-    export CXXFLAGS="-std=c++11 -stdlib=libc++ -nostdinc++ $${CXXFLAGS}"
-    export LDFLAGS="-lc++ -lc++abi $${LDFLAGS}"
+    export CXXFLAGS="-stdlib=libc++ -nostdinc++ $${CXXFLAGS}"
 fi
 """
 
