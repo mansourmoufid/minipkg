@@ -162,6 +162,7 @@ export FRAMAC_LIB="$$HOME/pkg/lib/frama-c"
 export FRAMAC_SHARE="$$HOME/pkg/share/frama-c"
 export COCCINELLE_HOME="$$HOME/pkg/lib/coccinelle"
 export PYTHONPATH="$$HOME/pkg/lib/coccinelle/python:$$PYTHONPATH"
+export PYTHONDONTWRITEBYTECODE=1
 export PERL5LIB="$$HOME/pkg/lib/perl5:$PERL5LIB"
 export PKG_CONFIG_PATH="$$HOME/pkg/lib/pkgconfig:$$PKG_CONFIG_PATH"
 export PYSDL2_DLL_PATH="$$HOME/pkg/lib"
