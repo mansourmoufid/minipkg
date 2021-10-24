@@ -270,6 +270,12 @@ if __name__ == '__main__':
     sh = sh.split(os.pathsep)[0]
     assert os.path.exists(sh), sh
     os.environ.update({'SH': sh})
+    if OPSYS == 'Darwin':
+        cflags = os.environ.get('CFLAGS', '')
+        cflags = ' '.join(cflags.split(' ') + [
+            '-Wno-error=implicit-function-declaration',
+        ])
+        os.environ.update({'CFLAGS': cflags})
     bootstrap_path = os.path.join(HOME, 'usr', 'pkgsrc', 'bootstrap')
     mk_conf = os.path.join(cwd, 'mk.conf')
     assert os.path.exists(mk_conf)
