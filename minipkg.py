@@ -278,24 +278,33 @@ if __name__ == '__main__':
     if not os.path.exists(os.path.join(bootstrap_path, 'work')):
         os.chdir(bootstrap_path)
         p = subprocess.Popen(
-            [
-                './bootstrap',
-                '--unprivileged',
-                '--abi', ABI,
-                '--compiler', CC,
-                '--make-jobs', '4',
-                '--prefer-pkgsrc', 'no',
-                '--mk-fragment', mk_conf,
-            ],
+            [sh],
+            stderr=sys.stderr,
+            stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             universal_newlines=True,
         )
-        out, err = p.communicate()
+        bootstrap = [
+            './bootstrap',
+            '--unprivileged',
+            '--abi', ABI,
+            '--compiler', CC,
+            '--cwrappers', 'no',
+            '--make-jobs', '4',
+            '--mk-fragment', mk_conf,
+        ]
+        p.stdin.write('\n'.join([
+            ' '.join(bootstrap),
+            '',
+            'exit 0',
+            '',
+        ]))
         log = os.path.join(HOME, 'pkgsrc-bootstrap-log.txt')
-        with open(log, 'w+') as f:
-            f.write(out)
-            f.write(err)
+        with open(log, 'wt') as f:
+            for line in p.stdout.readlines():
+                f.write(line)
+        p.wait()
         assert p.returncode == 0, 'bootstrap'
         try:
             os.remove(log)
