@@ -59,6 +59,7 @@ files = [
     'patch-bsd.prefs.mk',
     'patch-compiler.mk',
     'patch-Darwin.mk',
+    'patch-perl5',
     'patch-zlib',
 ]
 
@@ -71,6 +72,7 @@ hashes = [
     'a9709381238a29e3be551653b78d1db4f2bdc39d2fd1ac48f232c71bbf393738',
     '873e67f7db373a290b754611e9e050cba2324b3150c64f08d1e52a2d8789aa04',
     '852a7e2cf7a33a6b0f0c83f95ea37462566da915e785913cdfac3286d562432f',
+    '960ea1cd89e1913ea2f26a93225f2c587b150323d4c771b183f11ab6e2faa5c9',
     'ac36dedb99ab36500991bdf358359fcaf1065121d19e1f14ab2ab07c857f0e23',
 ]
 

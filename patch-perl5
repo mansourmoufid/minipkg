@@ -1,0 +1,16 @@
+--- lang/perl5/Makefile.orig	2021-04-16 06:55:34.000000000 -0400
++++ lang/perl5/Makefile	2021-04-16 06:56:40.000000000 -0400
+@@ -25,6 +25,13 @@
+ 
+ .include "../../mk/bsd.prefs.mk"
+ 
++.if ${OPSYS} == "Darwin"
++SUBST_CLASSES+=			symbols
++SUBST_STAGE.symbols=	pre-configure
++SUBST_FILES.symbols=	Configure
++SUBST_SED.symbols=		-e 's/set linkat d_linkat/set xlinkat d_linkat/'
++.endif
++
+ # Determine the Perl API version from the patchlevel.h file from the
+ # source distribution.
+ #
