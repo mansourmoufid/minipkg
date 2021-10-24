@@ -131,8 +131,8 @@ cwd = os.path.dirname(os.path.abspath(__file__))
 def osx_version():
     sw_vers_out = subprocess.check_output(['sw_vers', '-productVersion'])
     product_version = sw_vers_out.rstrip('\n')
-    osx_version = product_version.split('.')
-    return osx_version
+    version = product_version.split('.')
+    return tuple(int(x) for x in version)
 
 
 def getsdks():
