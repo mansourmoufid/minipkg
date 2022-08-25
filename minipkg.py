@@ -136,7 +136,10 @@ def osx_version():
 
 
 def getsdks():
-    out = subprocess.check_output(['xcodebuild', '-showsdks'])
+    try:
+        out = subprocess.check_output(['xcodebuild', '-showsdks'])
+    except CalledProcessError:
+        return ['macosx']
     sdks = []
     for line in out.split('\n'):
         match = re.match(r'.*\t-sdk (.*)', line)
@@ -185,6 +188,7 @@ minipkg_profile_templates['Linux'] = """
 minipkg_profile_templates['Darwin'] = """
 export MACOSX_DEPLOYMENT_TARGET="$macosx_version_min"
 export SDKROOT="$sdkroot"
+test -e "$SDKROOT" || export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
 """
 
 
