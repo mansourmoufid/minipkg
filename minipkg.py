@@ -333,7 +333,7 @@ if __name__ == '__main__':
         if mach == 'arm64':
             macosx_version_min = '11.0'
         else:
-            macosx_version_min = '10.9'
+            macosx_version_min = '10.12'
         vars['macosx_version_min'] = macosx_version_min
     minipkg_profile = os.path.join(HOME, '.minipkg_profile')
     with open(minipkg_profile, 'w+') as f:
