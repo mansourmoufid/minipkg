@@ -1,6 +1,6 @@
---- mk/compiler.mk.orig	2018-01-26 08:14:35.000000000 -0500
-+++ mk/compiler.mk	2018-09-08 15:50:04.000000000 -0400
-@@ -120,7 +120,7 @@
+--- pkgsrc/mk/compiler.mk.orig	2025-08-19 09:36:55
++++ pkgsrc/mk/compiler.mk	2025-08-19 09:37:16
+@@ -188,7 +188,7 @@
  
  .if defined(_ACCEPTABLE_COMPILERS)
  .  for _acceptable_ in ${_ACCEPTABLE_COMPILERS}
