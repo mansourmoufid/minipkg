@@ -103,19 +103,6 @@ def fix_rpath_lib(prefix, lib):
     change_id_name(lib, rpath)
 
 
-def fix_rpath_exe(prefix, exe):
-    cwd = os.path.split(exe)[0]
-    names = install_names(exe)
-    names = [name for name in names if not issystem(name)]
-    for name in names:
-        basename = path_strip('@rpath', name)
-        if basename == os.path.basename(name):
-            basename = os.path.join(cwd, basename)
-        basename = path_strip(prefix, basename)
-        rpath = os.path.join('@rpath', basename)
-        change_install_name(exe, name, rpath)
-
-
 def add_rpath(bin, path):
     p = Popen(
         ['install_name_tool', '-delete_rpath', path, bin],
@@ -129,6 +116,22 @@ def add_rpath(bin, path):
         bin,
     ])
     assert ret == 0, 'install_name_tool'
+
+
+def fix_rpath_exe(prefix, exe):
+    cwd = os.path.split(exe)[0]
+    names = install_names(exe)
+    names = [name for name in names if not issystem(name)]
+    for name in names:
+        if name == prefix:
+            continue
+        basename = path_strip('@rpath', name)
+        if basename == os.path.basename(name):
+            basename = os.path.join(cwd, basename)
+        basename = path_strip(prefix, basename)
+        rpath = os.path.join('@rpath', basename)
+        change_install_name(exe, name, rpath)
+    add_rpath(exe, prefix)
 
 
 def relative_path(path, top):
