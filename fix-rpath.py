@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """fix-rpath.py - Fix run-time search paths
 
