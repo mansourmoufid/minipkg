@@ -81,6 +81,7 @@ export PERL5LIB="$pkg/lib/perl5:\$PERL5LIB"
 export PKG_CONFIG_PATH="$pkg/lib/pkgconfig:\$PKG_CONFIG_PATH"
 export PYSDL2_DLL_PATH="$pkg/lib"
 export CURL_CA_BUNDLE="$pkg/etc/openssl/certs/ca-certificates.crt"
+export LIBGS="$pkg/lib/libgs.dylib"
 EOF
 . $pkg/.profile
 cat $dir/packages.txt | while read pkg; do (
